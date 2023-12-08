@@ -1,0 +1,413 @@
+"""
+
+You are a legal researcher writing a Section of the {restatement_title}
+
+Section title: {section_title}
+
+Section description: {description}
+
+A Section consists of three parts: a black-letter provision, Comment explicating, analyzing, and illustrating the black letter and its application, and a Reporter’s Notes explaining the sources relied upon in formulating the provision and its attendant Comment and setting forth its relationship to current law.
+
+Your current project is to write the Comment for the issue of {section_title} in the law of {area_of_law}.
+
+Your current task is to write an outline of the headings for the Comment.
+
+You should draft this outline by relying upon the black-letter-law provision, the explanation for the black-letter-law provision, and your notes on the law. You should rely exclusively upon your notes on the law for information. Although your notes and explanation may characterize groups under different headings you should not include those headings in your output.
+
+Purpose:
+
+The purpose of the Comment is to explain the background law behind the provision and the details of how the provision works in practice.
+
+Content and Organization:
+
+Comment should be structured in a way that will most readily assist the reader to understand the provision. To the greatest extent possible, it should track the structure of the black letter, and both the headings and subject matter of a Comment’s subdivisions should be tied to the black letter’s central terms and concepts. Nothing should be introduced in the Comment that is not closely related to the provision.
+
+The primary focus of the Comment should be the law of {area_of_law}. Other areas of law may be addressed to help clarify or contextualize the issue of {section_title} in the law of {area_of_law}, but the purpose of the Comment is not to explain other areas of law. Only address other areas of law after addressing {section_title} in the law of {area_of_law}.
+
+Comment is normally subdivided into distinct components, each introduced by a separate lower-case italicized letter and heading describing the subject matter. If additional subdivision is called for, such components are introduced by parenthetical italicized numbers—(1), (2), etc.—and given their own headings. Even if there is no need to subdivide the Comment, its single component should be identified as Comment and given an appropriate heading.
+
+Introductory components normally cover matters as scope, cross-references, rationale, and history or background. Subsequent components explicate and clarify in an orderly fashion the various components of the provision.
+
+The Comment is also the appropriate place for identifying the competing considerations encapsulated in the black-letter provision. In clarifying the black letter’s meaning and scope, the Comment may frequently make explicit what is only implicit or suggested by the provision, but it should normally remain consistent with the provision. On rare occasions, however, it may be useful to employ Comment to forecast, suggest, or consider possible areas of legal development, presently inconsistent with the provision, for which there is no current precedent.
+
+Components should address distinct considerations and should not be redundant.
+
+Your final output should consist of the headings for each comment component. The format should be an alphabetical list with each heading on a separate line. All the text should be italicized. The output should include this list and no other text or commentary. The details within each heading will be filled in later.
+
+Here are some examples from other Restatements of Law:
+
+Restatement (Third) of Property 
+
+Black letter law provision:
+
+**§  2.2 Intestate Share of Surviving Spouse**
+
+**An intestate decedent's surviving spouse takes a share of the intestate estate as provided by statute. The exact share differs among the states. Not infrequently, the spouse takes the entire intestate estate if the decedent leaves no surviving descendants or parents and, in some states, if the decedent also leaves no other specified relative such as a descendant of a parent. Older statutes tend to reduce the spouse's share to a fraction such as one-half or one-third when the decedent leaves a surviving descendant or another specified relative. Under the Revised Uniform Probate Code, the surviving spouse takes either the entire intestate estate or a specified lump sum plus a specified percentage of the excess, if any, depending on what other relatives survive the decedent.**
+
+Output:
+
+*a*. *Revised Uniform Probate Code.*
+
+*b*. *Original Uniform Probate Code.*
+
+*c*. *Nonuniform Probate Code Law.*
+
+*d*. *Community property.*
+
+*e*. *Putative spouse.*
+
+*f*. *Common-law spouse.* 
+
+*g*. *Domestic partner.* 
+
+
+
+Restatement (Third) of Property
+
+Black letter law provision:
+
+**§  8.2 Incapacity Due to Minority**
+
+**(a) A minor does not have capacity to make a will. A purported will made by a minor is void.**
+
+**(b) A minor does not have capacity to make a gift. A purported gift made by a minor is voidable, not void. Before reaching majority, the minor may disaffirm the gift. After reaching majority, the minor may either disaffirm or ratify the gift. The failure to disaffirm within a reasonable time after reaching majority constitutes a ratification of the gift.**
+
+**(c) For purposes of this section, a “minor” is a person who has not reached the age of majority or the age of capacity for the purpose in question and who is not emancipated. The age of majority is 18, unless an applicable statute provides otherwise.**
+
+Output:
+
+*a*. *Scope.*
+
+*b*. *Age of majority.* 
+
+*c*. *Capacity to make a will.*
+
+*d*. *Capacity to make a gift.* 
+
+*e*. *Capacity to receive a donative transfer.*
+
+*f*. *Capacity to serve as a fiduciary or agent.* 
+
+*g*. *Capacity to execute an advance health-care directive.*
+
+*h*. *Capacity to witness a will.*
+
+*i*. *Emancipated minor.* 
+
+
+
+Restatement (Second) of Property
+
+Black letter law provision:
+
+**§  12.2 Scope of the Donee's Authority**
+
+**The scope of the donee's authority as to appointees and the time and manner of appointment is unlimited except to the extent the donor effectively manifests an intent to impose limits.**
+
+Output:
+
+*a*. *General and non-general powers of appointment.* 
+
+*b*. *Powers presently exercisable and powers not presently exercisable.*
+
+*c*. *Variation in limits imposed on donee's authority.*
+
+
+
+Restatement (Second) of Contracts
+
+Black letter law provision:
+
+**§  63 Time When Acceptance Takes Effect**
+
+**Unless the offer provides otherwise,**
+
+**(a) an acceptance made in a manner and by a medium invited by an offer is operative and completes the manifestation of mutual assent as soon as put out of the offeree's possession, without regard to whether it ever reaches the offeror; but**
+
+**(b) an acceptance under an option contract is not operative until received by the offeror.**
+
+Output:
+
+*a*. *Rationale.*
+
+*b*. *Loss or delay in transit.* 
+
+*c*. *Revocation of acceptance.*
+
+*d*. *Other types of cases.*
+
+*e*. *The offeree's possession.*
+
+*f*. *Option contracts.* 
+
+
+
+Restatement (Second) of Contracts
+
+Black letter law provision:
+
+**§  75 Exchange of Promise for Promise**
+
+**Except as stated in §§ 76 and 77, a promise which is bargained for is consideration if, but only if, the promised performance would be consideration.**
+
+Output:
+
+*a*. *The executory exchange.*
+
+*b*. *Promise and performance.* 
+
+*c*. *Performance of legal duty and settlement of claims.* 
+
+*d*. *“Void” promises.* 
+
+
+
+Restatement (Second) of Contracts
+
+Black letter law provision:
+
+**§  164 When a Misrepresentation Makes a Contract Voidable**
+
+**(1) If a party's manifestation of assent is induced by either a fraudulent or a material misrepresentation by the other party upon which the recipient is justified in relying, the contract is voidable by the recipient.**
+
+**(2) If a party's manifestation of assent is induced by either a fraudulent or a material misrepresentation by one who is not a party to the transaction upon which the recipient is justified in relying, the contract is voidable by the recipient, unless the other party to the transaction in good faith and without reason to know of the misrepresentation either gives value or relies materially on the transaction.**
+
+Output:
+
+*a*. *Requirements.* 
+
+*b*. *Fraudulent and non-fraudulent misrepresentation.*
+
+*c*. *Inducement.*
+
+*d*. *Justification.*
+
+*e*. *Misrepresentation by a third party.* 
+
+
+
+Restatement (Second) of Conflict of Laws
+
+Black letter law provision:
+
+**§  222 The General Principle**
+
+**The interests of the parties in a thing are determined, depending upon the circumstances, either by the “law” or by the “local law” of the state which, with respect to the particular issue, has the most significant relationship to the thing and the parties under the principles stated in § 6.**
+
+Output:
+
+*a*. *Scope of section.*
+
+*b*. *Rationale.*
+
+*c*. *Purpose of property rule.*
+
+*d*. *The issue involved.* 
+
+*e*. *Whether reference is to “law” or to “local law” of selected state.* 
+
+*f*. *When rule in two or more states is the same.*
+
+*g*. *Characterization.*
+
+
+
+Restatement (Second) of Conflict of Laws
+
+Black letter law provision:
+
+**§  291 Relationship of Principal and Agent**
+
+**The rights and duties of a principal and agent toward each other are determined by the local law of the state which, with respect to the particular issue, has the most significant relationship to the parties and the transaction under the principles stated in § 6. This law is selected by application of the rules of §§ 187- 188.**
+
+Output:
+
+*a.*
+
+*b*. *Scope of section.*
+
+*c*. *Rationale.*
+
+*d*. *Purpose of rule*
+
+*e*. *The issue involved.*
+
+*f*. *Important contacts in determining state of most significant relationship.*
+
+*g*. *Reference is to “local law” of selected state.*
+
+*h*. *When rule of two or more states is the same.* 
+
+
+
+Restatement (Second) of Judgments
+
+Black letter law provision:
+
+**§  1 Requisites of a Valid Judgment**
+
+**A court has authority to render judgment in an action when the court has jurisdiction of the subject matter of the action, as stated in § 11, and**
+
+**(1) The party against whom judgment is to be rendered has submitted to the jurisdiction of the court, or**
+
+**(2) Adequate notice has been afforded the party, as stated in § 2, and the court has territorial jurisdiction of the action, as stated in §§ 4 to 9.**
+
+Output:
+
+*a*. *Rationale.*
+
+*b*. *Scope.*
+
+
+
+Restatement (Second) of Judgments
+
+Black letter law provision:
+
+**(1) A judgment in an action whose purpose is to determine or change a person's status is conclusive upon the parties to the action:**
+
+**(a) With respect to the existence of the status, and rights and obligations incident to the status which under the procedures governing the action are ordinarily determined therein, in accordance with the rules of claim preclusion stated in §§ 18- 26 and subject to the qualifications stated in § 13 concerning judgments granting or denying continuing relief;**
+
+**(b) With respect to issues determined in the action, in accordance with the rules of issue preclusion stated in §§ 27- 28.**
+
+**(2) A judgment in an action whose purpose is to determine or change a person's status is conclusive with respect to that status upon all other persons, with the following qualifications:**
+
+**(a) If a person has, under applicable law, an interest in such status such that he is entitled to contest its existence, the judgment is not conclusive upon him unless he was afforded an opportunity to be a party to the action;**
+
+**(b) When a statute, rule of court, or provision of the judgment itself limits the effect of the judgment with respect to other persons, the effect of the judgment is limited accordingly;**
+
+**(c) As against a person who is not entitled to contest the existence of the status, the judgment is not accorded effect to the extent it would result in unjust effect on that person's own status, rights, or obligations.**
+
+**(3) The determination of a person's status in an action other than one whose purpose is to determine or change that status is conclusive upon the parties to the action, in accordance with the rules of issue preclusion, except in a subsequent action whose purpose is to determine or change the status in question.**
+
+Output:
+
+*a*. *Scope.*
+
+*b*. *Rationale.*
+
+*c*. *Application of rules of preclusion.*
+
+*d*. *Claim preclusion.* 
+
+*f*. *Conclusiveness on non-parties (Subsection (2)).*
+
+*g*. *Status determination incident to other litigation.*
+
+
+
+Restatement (Third) of Restitution and Unjust Enrichment
+
+Black letter law provision:
+
+**§  7 Mistaken Performance of Another's Obligation**
+
+**Mistaken performance of another's obligation gives the performing party a claim in restitution against the obligor to the extent of the benefit mistakenly conferred on the obligor.**
+
+Output:
+
+*a*. *General principles and scope; relation to other sections.*
+
+*b*. *Liquidated obligation.*
+
+*c*. *Unliquidated obligation.*
+
+*d*. *Remedy.*
+
+*e*. *Negotiable instruments.* 
+
+
+
+Restatement (Third) of Restitution and Unjust Enrichment
+
+Black letter law provision:
+
+**§  34 Mistake or Supervening Change of Circumstances**
+
+**(1) A person who renders performance under a contract that is subject to avoidance by reason of mistake or supervening change of circumstances has a claim in restitution to recover the performance or its value, as necessary to prevent unjust enrichment. If the case is one in which the requirements of § 54 can be met, the remedy of rescission and restitution permits the reversal of the transaction without the need to demonstrate unjust enrichment.**
+
+**(2) For purposes of subsection (1):**
+
+**(a) the value of a nonreturnable contractual performance is measured by reference to the recipient's contractual expectations; and**
+
+**(b) the recipient's liability in restitution may be reduced to allow for loss incurred in reliance on the contract.**
+
+Output:
+
+*a*. *General principles and scope; relation to Restatement Second, Contracts.* 
+
+*b*. *Extent of performance.* 
+
+*c*. *The partially completed exchange.* 
+
+*d*. *Measure of benefit from interrupted performance; allocation of loss.*
+
+*e*. *Unwinding a completed transaction.* 
+
+*f*. *Mistake in real property transactions.* 
+
+
+
+Restatement (Third) Of Agency
+
+Black letter law provision:
+
+**§  4.01 Ratification Defined**
+
+**(1) Ratification is the affirmance of a prior act done by another, whereby the act is given effect as if done by an agent acting with actual authority.**
+
+**(2) A person ratifies an act by**
+
+**(a) manifesting assent that the act shall affect the person's legal relations, or**
+
+**(b) conduct that justifies a reasonable assumption that the person so consents.**
+
+**(3) Ratification does not occur unless**
+
+**(a) the act is ratifiable as stated in § 4.03,**
+
+**(b) the person ratifying has capacity as stated in § 4.04,**
+
+**(c) the ratification is timely as stated in § 4.05, and**
+
+**(d) the ratification encompasses the act in its entirety as stated in § 4.07.**
+
+Output:
+
+*a*. *Cross-references.* 
+
+*b*. *The nature and effect of ratification.* 
+
+*c*. *Related doctrines apart from agency.*
+
+*d*. *Actions that constitute ratification.* 
+
+*e*. *Authority to ratify.*
+
+*f*. *Failure to act as ratification.*
+
+*g*. *Receipt or retention of benefits.*
+
+*h*. *Position taken in litigation.*
+
+
+
+Restatement (Third) Of Agency
+
+Black letter law provision: 
+
+**§  4.06 Knowledge Requisite to Ratification**
+
+**A person is not bound by a ratification made without knowledge of material facts involved in the original act when the person was unaware of such lack of knowledge.**
+
+Output:
+
+*a*. *Cross-references.*
+
+*b*. *Effect of lack of knowledge.*
+
+*c*. *Material facts.* 
+
+*d*. *Risk of lack of knowledge.* 
+
+"""

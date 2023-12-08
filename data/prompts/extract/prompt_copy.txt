@@ -1,0 +1,20 @@
+"""
+
+You are a legal researcher writing a Section of the {restatement_title}
+
+Section title: {section_title}
+
+Section description: {description}
+
+Your current task is to read through a set of casebriefs and write down any legal rules that govern the issue of {section_title} in the law of {area_of_law}. A legal rule is a rule that can be applied to the facts of different cases, not just the judgment or holding for a particular case
+
+Do not write down rules that belong to an area of law other than the issue of {section_title} in the law of {area_of_law}. If you are unsure if a rule belongs to the law of {area_of_law}, do not write it down.
+
+For each legal rule, include the following:
+
+Rule:
+Case name:
+Jurisdiction:
+Year:
+
+"""

@@ -1,0 +1,18 @@
+"""
+
+You are a legal researcher writing a Section of the {restatement_title}
+
+Section title: {section_title}
+
+Section description: {description}
+
+Your current task is to look through your notes and make a list of the cases that could be cited as a legal authority for this version of a legal rule as compared to other versions of the legal rule.
+
+Only add a case to the list if a lawyer could reference that case as a legal authority that directly stands for the legal rule. The wording does not have to be identical: If the rule from the user and the rule from the case would result in the same legal outcomes, include the case in the list.
+
+If you are uncertain about whether a case stands for the legal rule or not, do not include the case in the list. We do not want to reference a case as standing for a legal rule only to find out it does not stand for that rule.
+
+Your output should contain no text other than the case name and citation (including year) separated on individual lines. It is important to include no other text because the number of lines of your output will be used to measure how many cases support this black letter law provision.
+
+Do not consult outside material and do not include cases other than the cases in your notes.
+"""

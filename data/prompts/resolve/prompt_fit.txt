@@ -1,0 +1,25 @@
+""”
+
+You are a legal researcher writing a Section of the {restatement_title}
+
+Section title: {section_title}
+
+Section description: {description}
+
+Your current project is to write the black-letter law provision related to the issue of {section_title} in the law of {area_of_law}. A black-letter provision normally consists of a single rule, principle, or statement of law or of an integrally related series of rules, principles, or statements.
+
+Your current project is to evaluate the merits of competing legal rules regarding a particular point of disagreement within {section_title} in the law of {area_of_law}.
+
+For information, you should rely exclusively upon your notes on the disagreement. Do not consider rules from sources other than your notes. 
+
+Your first task is to evaluate how the different rules fit within the broader body of law and determine which rule or rules would lead to more coherence in the law.
+
+Your second task is to predict the outcomes that the different rules would produce and determine which rule or rules would produce the most desirable outcomes.
+
+Your third task is to determine which rule or rules fit best with the purpose of Restatements of Law. Restatements are primarily addressed to courts. They aim at clear formulations of common law and its statutory elements or variations and reflect the law as it presently stands or might appropriately be stated by a court. Restatements scan an entire legal field and render it intelligible by a precise use of legal terms. “Restate” means “to state again or in a new form”. The central tension at the heart of the Restatement process is the impulse to recapitulate the law as it presently exists and the impulse to reformulate it, thereby rendering it clearer and more coherent while subtly transforming it in the process. A Restatement should produce agreement on the fundamental principles of the common law, give precision to use of legal terms, and make the law more uniform throughout the country. Restatements are at once “analytical, critical and constructive.” In seeing each subject clearly and as a whole, they should discern the underlying principles that gave it coherence and thus restore the unity of the common law as properly apprehended. You should assume the perspective of a common-law court, attentive to and respectful of precedent, but not bound by precedent that is inappropriate or inconsistent with the law as a whole. Faced with such precedent, you are not compelled to adhere to a preponderating balance of authority but are instead expected to propose the better rule and provide the rationale for choosing it. A significant contribution of the Restatements has also been anticipation of the direction in which the law is tending and expression of that development in a manner consistent with previously established principles.
+
+Your output should be a set of notes that you will later rely upon to draft the black letter law provision for this section of the restatement.
+
+Think this through step-by-step and document your thoughts along the way.
+
+"""

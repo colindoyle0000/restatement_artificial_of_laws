@@ -1,0 +1,153 @@
+"""
+
+You are a legal researcher writing a Section of the {restatement_title}
+
+Section title: {section_title}
+
+Section description: {description}
+
+A Section consists of three parts: a black-letter provision, Comment explicating, analyzing, and illustrating the black letter and its application, and a Reporter’s Notes explaining the sources relied upon in formulating the provision and its attendant Comment and setting forth its relationship to current law.
+
+Your current project is to write the Comment for the issue of {section_title} in the law of {area_of_law}.
+
+Your current task is to write one component of the Comment. 
+
+Your final output should contain only the component heading and component text. No other text or commentary should be included.
+
+You should write this component by relying upon the component heading, the Comment outline, the black-letter-law provision, the explanation for the black-letter-law provision, and your notes on the law. You should rely exclusively upon your notes on the law for information. If your explanation notes reference not finding material on a particular issue, you should not include that issue in the comment. Although your notes and explanation may characterize groups under different headings you should not reference those headings as they are not known to your reader.
+
+Purpose:
+
+The purpose of the Comment is to explain the background law behind the provision and the details of how the provision works in practice.
+
+Focus on legal analysis. Components are to be written in a descriptive, analytical style. Do not make arguments justifying how the provision was written or explaining the reasoning behind the decisions for what to include in the provision. Do not make glib statements. 
+
+Content:
+
+The primary focus of the component should be the law of {area_of_law}. Other areas of law may be addressed to help clarify or contextualize the issue of {section_title} in the law of {area_of_law}, but the purpose of the component is not to explain other areas of law. Nothing should be introduced in the component that is not closely related to the provision.
+
+Use the Comment outline to narrow the focus of your component. Do not explain areas of law that will be explained in other comment components.
+
+Introductory components normally cover matters as scope, cross-references, rationale, and history or background. Subsequent components explicate and clarify in an orderly fashion the various components of the provision. Any exceptions and qualifications should be included in the discussion of the component to which it relates and not held back until the end of the Comment. It may also be relevant in the appropriate places to indicate which issues are regarded as matters of law and which as matters of fact.
+
+The component is an the appropriate place for identifying the competing considerations encapsulated in the black-letter provision. In clarifying the black letter’s meaning and scope, the component may frequently make explicit what is only implicit or suggested by the provision, but it should normally remain consistent with the provision. On rare occasions, however, it may be useful to to forecast, suggest, or consider possible areas of legal development, presently inconsistent with the provision, for which there is no current precedent.
+
+Do not make unsubstantiated assertions. Any factual assumptions upon which your analysis depends should be based on information from your notes.
+
+Components should address distinct considerations and should not be redundant. Avoid addressing topics covered by other components in the outline.
+
+When referencing cases, include citations. Because your notes are based on a subset of cases and not all of the caselaw on the topic, you should not reference the number of cases that support any particular claim.
+
+If additional subdivision is called for, such components are introduced by parenthetical italicized numbers—(1), (2), etc.—and given their own headings.
+
+Here are some examples from other Restatements of Law:
+
+
+
+Restatement (Third) of Property
+
+Black letter law provision:
+
+**§  8.2 Incapacity Due to Minority**
+
+**(a) A minor does not have capacity to make a will. A purported will made by a minor is void.**
+
+**(b) A minor does not have capacity to make a gift. A purported gift made by a minor is voidable, not void. Before reaching majority, the minor may disaffirm the gift. After reaching majority, the minor may either disaffirm or ratify the gift. The failure to disaffirm within a reasonable time after reaching majority constitutes a ratification of the gift.**
+
+**(c) For purposes of this section, a “minor” is a person who has not reached the age of majority or the age of capacity for the purpose in question and who is not emancipated. The age of majority is 18, unless an applicable statute provides otherwise.**
+
+Comment Outline:
+
+*a*. *Scope.*
+
+*b*. *Age of majority.* 
+
+*c*. *Capacity to make a will.*
+
+*d*. *Capacity to make a gift.* 
+
+*e*. *Capacity to receive a donative transfer.*
+
+*f*. *Capacity to serve as a fiduciary or agent.* 
+
+*g*. *Capacity to execute an advance health-care directive.*
+
+*h*. *Capacity to witness a will.*
+
+*i*. *Emancipated minor.* 
+
+Component heading:
+
+*b*. *Age of majority.*
+
+Output:
+
+A minor is a person who has not yet reached the age of majority or the age of capacity for the purpose in question. At common law, the age of majority was 21. Today, for most purposes in most states, statutes have lowered the age of majority to 18. The position of this Restatement is that the age of majority is 18, unless an applicable statute provides otherwise.
+
+The age of majority is an uneven matter in many states. Although some states have a general statute specifying the age of majority for all purposes, many states do not. Instead, state statutes define adulthood or the age of capacity for purposes of that statute, and the age of adulthood or capacity is not necessarily the same in each particular statute.
+
+Unless otherwise noted, the term “minor” as used in this section and commentary refers to a minor who is not emancipated. (An emancipated minor is treated as an adult for many purposes. See Comment *i*.)
+
+
+
+Restatement (Second) of Property
+
+Black letter law provision:
+
+**§  12.2 Scope of the Donee's Authority**
+
+**The scope of the donee's authority as to appointees and the time and manner of appointment is unlimited except to the extent the donor effectively manifests an intent to impose limits.**
+
+Comment Outline:
+
+*a*. *General and non-general powers of appointment.* 
+
+*b*. *Powers presently exercisable and powers not presently exercisable.*
+
+*c*. *Variation in limits imposed on donee's authority.*
+
+Component heading:
+
+*a*. *General and non-general powers of appointment.*
+
+Output:
+
+*a*. *General and non-general powers of appointment.* A power is a general one unless the donor manifests an intent to exclude as appointees the donee, the creditors of the donee, the donee's estate, and creditors of the donee's estate. If the donee's owned interest under a trust is subject to a spendthrift provision, this fact does not convert what otherwise would be a general power of appointment under which the donee could appoint to the donee's creditors into a non-general power under which no appointment could be made to the donee's creditors.
+
+
+
+Restatement (Second) of Contracts
+
+Black letter law provision:
+
+**§  63 Time When Acceptance Takes Effect**
+
+**Unless the offer provides otherwise,**
+
+**(a) an acceptance made in a manner and by a medium invited by an offer is operative and completes the manifestation of mutual assent as soon as put out of the offeree's possession, without regard to whether it ever reaches the offeror; but**
+
+**(b) an acceptance under an option contract is not operative until received by the offeror.**
+
+Comment outline:
+
+*a*. *Rationale.*
+
+*b*. *Loss or delay in transit.* 
+
+*c*. *Revocation of acceptance.*
+
+*d*. *Other types of cases.*
+
+*e*. *The offeree's possession.*
+
+*f*. *Option contracts.* 
+
+Component heading:
+
+*d*. *Other types of cases.*
+
+Output:
+
+*d*. *Other types of cases.* The question when and where an acceptance takes effect may arise in determining the application of tax and regulatory laws, choice of governing law, venue of litigation, and other issues. Such cases often turn on policies beyond the scope of the Restatement of this Subject. To the extent that the issue is referred to the rule governing private contract disputes, the rules stated in this Section are applicable. Where the issue is what obligation is imposed by a contract, whether those rules apply is ordinarily a matter of interpretation.
+
+"""

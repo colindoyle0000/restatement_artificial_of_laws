@@ -1,0 +1,67 @@
+"""
+
+You are a legal researcher writing a Section of the {restatement_title}
+
+Section title: {section_title}
+
+Section description: {description}
+
+A Section consists of three parts: a black-letter provision, Comment explicating, analyzing, and illustrating the black letter and its application, and a Reporter’s Notes explaining the sources relied upon in formulating the provision and its attendant Comment and setting forth its relationship to current law.
+
+Your current task is to plan the topics for illustrations for one part of the Comment for the issue of {section_title} in the law of {area_of_law}.
+
+To help you plan the topics, you should rely upon your plans for other illustrations, the black-letter-law provision, the part of the Comment, and the outline of all comments.
+
+Illustrations are hypothetical examples of how the black-letter rule or principle under discussion applies to different situations. Each illustration should demonstrate a different aspect of how the legal rule described in the part of the Comment operates in practice.
+
+Your plan should be a list of each aspect of the legal rule that you would like to demonstrate. This list of aspects should reflect the discussion within this part of the Comment. 
+
+Only include in your list aspects of the legal rule that are confusing. The point of the illustration is to clarify for the reader an aspect of the legal rule that the reader might not fully understand from reading the black-letter law provision. 
+
+Do not include in your list any aspects of the legal rule that are straightforward and can be understood without a hypothetical example. Only include aspects that require further explanation and demonstration for the reader to fully understand.
+
+Do not include in your list any entries that address an aspect of the legal rule that has already been addressed in your “plans so far” list. Each entry in your list should address a unique aspect of the legal rule.
+
+If another comment from your Outline of all Comments would be a more appropriate place to address an aspect of the legal rule, do not include that aspect in your list.
+
+Your list can include as little as one entry or as many as five entries.
+
+Number your illustrations 
+
+Here are some examples of plans from other Restatements of Law:
+
+Part of Comment:
+
+_c_. _Failure to give actual notice._ A notice procedure that meets the required standard of reasonable certainty can result in a failure of actual notice. It is settled, however, that if the notice-giving procedure meets the standard of reasonable certainty, a judgment may properly be entered against a person who was not actually reached with notice, unless it was known that the notice would be ineffective. See Comment _f_. This proposition is a practical necessity because if the law were otherwise a plaintiff would be remediless against a person who could not be found after reasonably diligent search. See also Comment _g_.
+
+Plan for illustrations:
+
+1. Demonstrate how delivering notice through last known address is adequate even if defendant never received notice.
+
+Part of Comment:
+
+*f*. *Failure to act as ratification.* A principal may ratify an act by failing to object to it or to repudiate it. Ratification results under subsection (2)(a) from a person's manifestation of assent. Failure to object may constitute such a manifestation when the person has notice that others are likely to draw such an inference from silence.
+
+Delay in expressing an objection to an unauthorized act may result in ratification, depending on the length of time that elapses between the time the principal learns of the unauthorized act and the time the principal manifests an objection. It is a question of fact in the particular circumstances whether the lapse in time is sufficient to constitute ratification.
+
+Plan for Illustrations:
+
+2. Demonstrate how not saying anything can result in ratification.
+
+3. Demonstrate how not repudiating an employee’s actions can result in ratification.
+
+4. Demonstrate how reasonableness determines how long a principal has to repudiate.
+
+Part of Comment:
+
+*g*. *Status determination incident to other litigation.* The question of a person's status may arise as an incident to the adjudication of some other controversy. Thus, a claimant of a property interest or social welfare benefit, as the “widower” or “widow” of another, may have to prove the prior marriage relationship with the decedent as against the person against whom the claim is asserted. The issues determined in the course of ascertaining the asserted status are preclusive on the parties in subsequent litigation, in the same way as any other factual issues determined between litigants.
+
+The determination of issues is also preclusive against a party thereto who thereafter is involved in litigation with persons who were not parties to the first action, in accordance with the rule in § 29. However, the determinations of status incident to resolving non-status litigation should not be given preclusive effects that disturb the purpose of special proceedings for determining status. When a person's status has been determined in non-status litigation, the issues should be conclusive in related non-status litigation, but not otherwise. See § 28.
+
+Plan for Illustrations:
+
+7. Example of how a determination of actor’s status as “widow” or “widower”  in litigation between parties, precludes one of the parties from disputing that status in subsequent litigation litigation. 
+
+8. Same example as before, but make the determination be that the actor is not a “widow” or “widower.”
+
+“”“

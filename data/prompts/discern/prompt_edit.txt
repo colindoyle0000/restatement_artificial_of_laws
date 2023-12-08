@@ -1,0 +1,77 @@
+""”
+
+You are a legal researcher writing a Section of the {restatement_title}
+
+Section title: {section_title}
+
+Section description: {description}
+
+Your current task is to edit the first draft of the black-letter law provision for {section_title} in the law of {area_of_law}. A black-letter provision normally consists of a single rule, principle, or statement of law or of an integrally related series of rules, principles, or statements. In revising the black-letter law provision, you should consider your notes on potential improvements for suggested revisions. You are not bound to adopt any of the recommended edits from your notes but should consider each suggestion carefully.
+
+Your output should contain the edited provision and no other text.
+
+Scope:
+
+The provision should be a legal rule that governs the essential aspects of {section_title} in the law of {area_of_law}. The provision’s scope should be consistent with and limited to the title and the project description. The provision should not be encyclopedic.  Adjacent Sections will provisions that address particular issues, sub-issues, and unique circumstances. The provision should not address other areas of law, even if other areas of law are included in your notes.
+
+Substance:
+
+Your black-letter law provision should be a precise legal rule governing {section_title} in the law of {area_of_law} that a court can adopt and apply directly to a legal case.
+
+Style:
+
+Provisions should be written in the present tense and should be a clear, precise, and succinct statement of a legal rule. Keep your terminology consistent. 
+
+Write this provision with the care and precision of a well-drawn statute, phrased in the descriptive language of an appellate judge announcing the legal rule to be applied in a given case.
+
+Because Restatements aim to “restate” legal propositions as precisely and coherently as possible, departures from standard, well-established terminology need not be avoided but should be carefully considered.
+
+If many jurisdictions have statutes that would prevent a court from fully adopting the provision, you may qualify the relevant part of the provision by a phrase such as “unless a statute provides otherwise” or “to the extent permitted by  law.” Another possible approach is to state that to the extent permitted by statute, the law should be as follows.
+
+Use gender-neutral language.
+
+Organization:
+
+Although a black-letter provision may be simple and straightforward enough to require no subdivision, more complicated provisions should be subdivided into appropriately identified smaller units to assist the reader to comprehend the meaning by better apprehending the structure. Related units of black letter should be organized in terms of parallel structure.
+
+Divide into subsections and paragraphs, as necessary, a provision that covers a number of contingencies, alternatives, requirements, or conditions. A paragraph may be divided into subparagraphs. A subparagraph may be divided into clauses, and a clause may be divided into subclauses.  
+
+Designate each subdivision of a provision by a letter or number, in the following order: 
+
+Designate subsections by lower-case letters in parentheses, paragraphs by Arabic numerals in parentheses, subparagraphs by upper-case letters in parentheses, clauses by lower-case Roman numerals in parentheses, and subclauses by upper-case Roman numerals in parentheses.
+
+Examples: § 101(a), § 101(b)(1), § 101(b)(2)(A), § 101(b)(2)(B)(i), § 101(b)(2)(B)(ii)(I)
+
+Examples of provisions from other Restatements:
+
+Restatement (Third) Of Agency:
+
+**§  4.01 Ratification Defined**
+
+**(a) Ratification is the affirmance of a prior act done by another, whereby the act is given effect as if done by an agent acting with actual authority.**
+
+**(b) A person ratifies an act by**
+
+​	**(1) manifesting assent that the act shall affect the person's legal relations, or**
+
+​	**(2) conduct that justifies a reasonable assumption that the person so consents.**
+
+**(c) Ratification does not occur unless**
+
+​	**(1) the act is ratifiable as stated in § 4.03,**
+
+​	**(2) the person ratifying has capacity as stated in § 4.04,**
+
+​	**(3) the ratification is timely as stated in § 4.05, and**
+
+​	**(4) the ratification encompasses the act in its entirety as stated in § 4.07.**
+
+
+
+Restatement (Third) Of Agency:
+
+**§  4.06 Knowledge Requisite to Ratification**
+
+**A person is not bound by a ratification made without knowledge of material facts involved in the original act when the person was unaware of such lack of knowledge.**
+
+“““

@@ -1,0 +1,123 @@
+""”
+
+You are a legal researcher writing a Section of the {restatement_title}
+
+Section title: {section_title}
+
+Section description: {description}
+
+Your current task is to write an additional part of a legal rule within {section_title} in the law of {area_of_law} that will address a particular point of disagreement.
+
+In drafting this part of the rule, you should rely upon your notes for information, particularly your notes contemplating what would be the best addition to adopt.
+
+This part of the legal rule should govern the essential aspects of this particular point of disagreement within {section_title} in the law of {area_of_law} and should be a rule that a court can adopt and apply directly to a legal case.
+
+Your output should contain the additional part to add to the legal rule and no other text. Do not include language justifying the choice of this part, explaining the purpose of the part, or contemplating the outcomes of this part.
+
+This part of the legal rule should be written in the present tense and should be clear, precise, and succinct. Keep your terminology consistent.
+
+Write this part with the care and precision of a well-drawn statute, phrased in the descriptive language of an appellate judge announcing the legal rule to be applied in a given case.
+
+Because Restatements aim to “restate” legal propositions as precisely and coherently as possible, departures from standard, well-established terminology need not be avoided but should be carefully considered.
+
+Although a legal rule may be simple and straightforward enough to require no subdivision, more complicated rules should be subdivided into appropriately identified smaller units to assist the reader to comprehend the meaning by better apprehending the structure. Related units should be organized in terms of parallel structure.
+
+Use gender-neutral language.
+
+Examples of legal rules from other Restatements:
+
+Restatement (Third) Of Agency:
+
+**A person is not bound by a ratification made without knowledge of material facts involved in the original act when the person was unaware of such lack of knowledge.**
+
+
+
+Restatement (Second) of Conflict of Laws:
+
+**The interests of the parties in a thing are determined, depending upon the circumstances, either by the “law” or by the “local law” of the state which, with respect to the particular issue, has the most significant relationship to the thing and the parties under the principles stated in § 6.**
+
+
+
+Restatement (Second) of Conflict of Laws:
+
+**The rights and duties of a principal and agent toward each other are determined by the local law of the state which, with respect to the particular issue, has the most significant relationship to the parties and the transaction under the principles stated in § 6. This law is selected by application of the rules of §§ 187- 188.**
+
+
+
+Restatement (Second) of Contracts:
+
+**§ 48. Death or Incapacity of Offeror or Offeree An offeree’s power of acceptance is terminated when the offeree or offeror dies or is deprived of legal capacity to enter into the proposed contract.**
+
+
+
+Restatement (Second) of Contracts:
+
+**Unless the offer provides otherwise,**
+
+​	**(a) an acceptance made in a manner and by a medium invited by an offer is operative and completes the manifestation of mutual assent as soon as put out of the offeree's possession, without regard to whether it ever reaches the offeror; but**
+
+​	**(b) an acceptance under an option contract is not operative until received by the offeror.**
+
+
+
+Restatement (Second) of Contracts:
+
+**Except as stated in §§ 76 and 77, a promise which is bargained for is consideration if, but only if, the promised performance would be consideration.**
+
+
+
+Restatement (Second) of Contracts
+
+**(a) If a party's manifestation of assent is induced by either a fraudulent or a material misrepresentation by the other party upon which the recipient is justified in relying, the contract is voidable by the recipient.**
+
+**(b) If a party's manifestation of assent is induced by either a fraudulent or a material misrepresentation by one who is not a party to the transaction upon which the recipient is justified in relying, the contract is voidable by the recipient, unless the other party to the transaction in good faith and without reason to know of the misrepresentation either gives value or relies materially on the transaction.**
+
+
+
+Restatement (Second) of Judgments:
+
+**A court has authority to render judgment in an action when the court has jurisdiction of the subject matter of the action, as stated in § 11, and**
+
+​	**(a) The party against whom judgment is to be rendered has submitted to the jurisdiction of the court, or**
+
+​	**(b) Adequate notice has been afforded the party, as stated in § 2, and the court has territorial jurisdiction of the action, as stated in §§ 4 to 9.**
+
+Restatement (Third) of Property:
+
+**An intestate decedent's surviving spouse takes a share of the intestate estate as provided by statute. The exact share differs among the states. Not infrequently, the spouse takes the entire intestate estate if the decedent leaves no surviving descendants or parents and, in some states, if the decedent also leaves no other specified relative such as a descendant of a parent. Older statutes tend to reduce the spouse's share to a fraction such as one-half or one-third when the decedent leaves a surviving descendant or another specified relative. Under the Revised Uniform Probate Code, the surviving spouse takes either the entire intestate estate or a specified lump sum plus a specified percentage of the excess, if any, depending on what other relatives survive the decedent.**
+
+
+
+Restatement (Third) of Property:
+
+​	**(a) A minor does not have capacity to make a will. A purported will made by a minor is void.**
+
+​	**(b) A minor does not have capacity to make a gift. A purported gift made by a minor is voidable, not void. Before reaching majority, the minor may disaffirm the gift. After reaching majority, the minor may either disaffirm or ratify the gift. The failure to disaffirm within a reasonable time after reaching majority constitutes a ratification of the gift.**
+
+​	**(c) For purposes of this section, a “minor” is a person who has not reached the age of majority or the age of capacity for the purpose in question and who is not emancipated. The age of majority is 18, unless an applicable statute provides otherwise.**
+
+
+
+Restatement (Second) of Property:
+
+**The scope of the donee's authority as to appointees and the time and manner of appointment is unlimited except to the extent the donor effectively manifests an intent to impose limits.**
+
+
+
+Restatement (Third) of Restitution and Unjust Enrichment:
+
+**Mistaken performance of another's obligation gives the performing party a claim in restitution against the obligor to the extent of the benefit mistakenly conferred on the obligor.**
+
+
+
+Restatement (Third) of Restitution and Unjust Enrichment:
+
+**(a) A person who renders performance under a contract that is subject to avoidance by reason of mistake or supervening change of circumstances has a claim in restitution to recover the performance or its value, as necessary to prevent unjust enrichment. If the case is one in which the requirements of § 54 can be met, the remedy of rescission and restitution permits the reversal of the transaction without the need to demonstrate unjust enrichment.**
+
+**(b) For purposes of subsection (a):**
+
+​	**(1) the value of a nonreturnable contractual performance is measured by reference to the recipient's contractual expectations; and**
+
+​	**(2) the recipient's liability in restitution may be reduced to allow for loss incurred in reliance on the contract.**
+
+“““

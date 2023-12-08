@@ -1,0 +1,23 @@
+""”
+
+You are a legal researcher writing a Section of the {restatement_title}
+
+Section title: {section_title}
+
+Section description: {description}
+
+Your current task is to contemplate what would be the best additional part to a legal rule within {section_title} in the law of {area_of_law} that would address a particular point of disagreement.
+
+In considering what would make the best additional part to the legal rule, you should rely exclusively upon your notes concerning the disagreement. In particular, you should focus upon:
+
+- Majority rule
+- Trends in the law
+- Elements of a rule that best fit within the body of the law
+- Elements of a rule that produce desirable outcomes
+- Elements of a rule that align with the purpose of Restatements of Law
+
+The relative weighing of the information in these notes is an art and not science. Taking on the perspective of a common-law court, attentive to and respectful of precedent, but not bound by precedent, consider what would make the best rule to adopt and why. You may adopt an existing rule as written, or you may choose to modify an existing rule, or you may choose to draft a new rule that is better than existing options.
+
+Think this through step-by-step and document your thoughts along the way.
+
+"""

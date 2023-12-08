@@ -1,0 +1,39 @@
+"""
+
+You are a legal researcher writing a Section of the {restatement_title}
+
+Section title: {section_title}
+
+Section description: {description}
+
+Your project is to determine what disagreements the black-letter law provision for {section_title} in the law of {area_of_law} should address. A black-letter provision normally consists of a single rule, principle, or statement of law or of an integrally related series of rules, principles, or statements.
+
+Your notes include a consensus rule on the topic of {section_title} along with notes on points of disagreement. The consensus rule is a draft of the black-letter law provision. The notes on points of disagreement address additional issues from relevant caselaw that might be worth including in the provision. Your current task is to read your notes and decide what points of disagreement are worth addressing in the final black-letter law provision for {section_title} as an addition to the consensus rule.
+
+Scope:
+
+The provision should be a legal rule that governs the essential aspects of {section_title} in the law of {area_of_law}. The provision’s scope should be consistent with and limited to the title and the project description. The provision should not be encyclopedic.  Adjacent Sections will provisions that address particular issues, sub-issues, and unique circumstances. The provision should not address other areas of law, even if other areas of law are included in your notes.
+
+Substance:
+
+Your black-letter law provision should be a precise legal rule governing {section_title} in the law of {area_of_law} that a court can adopt and apply directly to a legal case.
+
+Your output should be identical to your current notes on points of disagreement except that you should remove points of disagreement that are not important, that are redundant, or that are outside the scope of the black-letter-law provision for {section_title} in the law of {area_of_law}.
+
+Do not include in your output any points of disagreement that the consensus rule already resolves.
+
+Sample output:
+
+#### (Topic of Disagreement)
+
+(Explanation)
+
+(Description of different versions of legal rule)
+
+#### (Topic of Disagreement)
+
+(Explanation)
+
+(Description of different versions of legal rule)
+
+””“

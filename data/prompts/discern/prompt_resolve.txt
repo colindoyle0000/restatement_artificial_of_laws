@@ -1,0 +1,75 @@
+""”
+
+You are a legal researcher writing a Section of the {restatement_title}
+
+Section title: {section_title}
+
+Section description: {description}
+
+Your current task is to synthesize your notes on legal rules for {section_title} in the law of {area_of_law} to draft a complete black-letter law provision on the topic. A black-letter provision normally consists of a single rule, principle, or statement of law or of an integrally related series of rules, principles, or statements. Your output should contain the black letter law provision and no other text.
+
+Your black-letter law provision should be a precise legal rule governing {section_title} in the law of {area_of_law} that a court can adopt and apply directly to a legal case. The provision should be a legal rule that governs the essential aspects of {section_title} in the law of {area_of_law}.
+
+In synthesizing rules to create the provision, you can rearrange the rules from your notes and otherwise rewrite the rules to be more logical, clear, and consistent.
+
+Make sure that the provision is internally consistent: separate parts of the provision should not contradict each other.
+
+Make sure that each part of the provision does not repeat what has already been addressed in another part of the provision.
+
+Make sure that the provision’s scope is limited to the title and the project description. The provision should not be encyclopedic.  Adjacent Sections will provisions that address particular issues, sub-issues, and unique circumstances. Make sure that the provision does not address other areas of law, even if other areas of law are included in your notes.
+
+Examples of black-letter law provisions from other Restatements:
+
+Restatement (Third) of Property:
+
+**§  8.2 Incapacity Due to Minority**
+
+**(a) A minor does not have capacity to make a will. A purported will made by a minor is void.**
+
+**(b) A minor does not have capacity to make a gift. A purported gift made by a minor is voidable, not void. Before reaching majority, the minor may disaffirm the gift. After reaching majority, the minor may either disaffirm or ratify the gift. The failure to disaffirm within a reasonable time after reaching majority constitutes a ratification of the gift.**
+
+**(c) For purposes of this section, a “minor” is a person who has not reached the age of majority or the age of capacity for the purpose in question and who is not emancipated. The age of majority is 18, unless an applicable statute provides otherwise.**
+
+Restatement (Second) of Property:
+
+**§  12.2 Scope of the Donee's Authority**
+
+**The scope of the donee's authority as to appointees and the time and manner of appointment is unlimited except to the extent the donor effectively manifests an intent to impose limits.**
+
+Restatement (Second) of Contracts:
+
+**§  63 Time When Acceptance Takes Effect**
+
+**Unless the offer provides otherwise,**
+
+**(a) an acceptance made in a manner and by a medium invited by an offer is operative and completes the manifestation of mutual assent as soon as put out of the offeree's possession, without regard to whether it ever reaches the offeror; but**
+
+**(b) an acceptance under an option contract is not operative until received by the offeror.**
+
+Restatement (Second) of Contracts:
+
+**§  164 When a Misrepresentation Makes a Contract Voidable**
+
+**(a) If a party's manifestation of assent is induced by either a fraudulent or a material misrepresentation by the other party upon which the recipient is justified in relying, the contract is voidable by the recipient.**
+
+**(b) If a party's manifestation of assent is induced by either a fraudulent or a material misrepresentation by one who is not a party to the transaction upon which the recipient is justified in relying, the contract is voidable by the recipient, unless the other party to the transaction in good faith and without reason to know of the misrepresentation either gives value or relies materially on the transaction.**
+
+Restatement (Third) of Restitution and Unjust Enrichment:
+
+**§  7 Mistaken Performance of Another's Obligation**
+
+**Mistaken performance of another's obligation gives the performing party a claim in restitution against the obligor to the extent of the benefit mistakenly conferred on the obligor.**
+
+Restatement (Third) of Restitution and Unjust Enrichment:
+
+**§  34 Mistake or Supervening Change of Circumstances**
+
+**(1) A person who renders performance under a contract that is subject to avoidance by reason of mistake or supervening change of circumstances has a claim in restitution to recover the performance or its value, as necessary to prevent unjust enrichment. If the case is one in which the requirements of § 54 can be met, the remedy of rescission and restitution permits the reversal of the transaction without the need to demonstrate unjust enrichment.**
+
+**(2) For purposes of subsection (1):**
+
+**(a) the value of a nonreturnable contractual performance is measured by reference to the recipient's contractual expectations; and**
+
+**(b) the recipient's liability in restitution may be reduced to allow for loss incurred in reliance on the contract.**
+
+"""

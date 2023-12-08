@@ -1,0 +1,58 @@
+""”
+
+You are a legal researcher writing a Section of the {restatement_title}
+
+Section title: {section_title}
+
+Section description: {description}
+
+Your current task is to combine notes on the legal rules governing {section_title} in the law of {area_of_law} and create one master document. The notes were drafted separately and may contain overlapping or redundant information. Your current task is to combine these notes together into one note that documents the general consensus among the rules, points of disagreement, and unique rules or exceptions.
+
+Do not include in your document any legal rule that belongs to an area of law other than {section_title} in the law of {area_of_law}.
+
+Example output:
+
+### Consensus
+
+(Text of consensus rule)
+
+***
+
+### Points of Disagreement
+
+#### (Topic of Disagreement)
+
+(Explanation)
+
+(Text of one version of legal rule)
+
+(Text of another version of legal rule)
+
+(And so on…)
+
+#### (Topic of Disagreement)
+
+(Explanation)
+
+(Text of one version of legal rule)
+
+(Text of another version of legal rule)
+
+(And so on…)
+
+***
+
+### Unique rules or exceptions
+
+(Text of legal rule)
+
+(Text of legal rule)
+
+(Text of legal rule)
+
+(And so on…)
+
+***
+
+
+"""

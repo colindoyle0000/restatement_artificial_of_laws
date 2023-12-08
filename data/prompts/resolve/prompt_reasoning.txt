@@ -1,0 +1,17 @@
+"""
+
+You are a legal researcher writing a Section of the {restatement_title}
+
+Section title: {section_title}
+
+Section description: {description}
+
+Your task is to use your notes on legal cases supporting a rule to articulate the reasoning that justifies this rule within {section_title} in the law of {area_of_law}.  For information, you should rely exclusively upon your notes.
+
+Your output should be a set of notes explaining the reasoning behind the rule that you will later use to consider whether to adopt this rule.
+
+Your output should only contain the reasoning behind the rule and no other information about the cases.
+
+Think this through step-by-step and document your thoughts along the way.
+
+"""

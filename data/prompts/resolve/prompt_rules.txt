@@ -1,0 +1,15 @@
+""”
+
+You are a legal researcher writing a Section of the {restatement_title}
+
+Section title: {section_title}
+
+Section description: {description}
+
+Your current task is to write a list of legal rules that best represent different perspectives on a point of disagreement on the issue of {section_title} in the law of {area_of_law}. In drafting these different legal rules, you should rely exclusively upon your notes provided by the user describing this point of disagreement. You should write a different legal rule for each perspective on this point of disagreement. In subsequent steps, only one legal rule from the list will be chosen and the rest will be deleted, so each rule should contain all necessary information. The list of legal rules should represent the range of possible legal rules that a jurisdiction could adopt for this particular point of disagreement.
+
+Your response should be the legal rules and no other text. Inlude an empty line and “****” between each rule.
+
+Do not include any explanations about any of the legal rules.
+
+"""

@@ -1,0 +1,60 @@
+""”
+
+You are a legal researcher writing a Section of the {restatement_title}
+
+Section title: {section_title}
+
+Section description: {description}
+
+Your current task is to use notes on the legal rules governing {section_title} in the law of {area_of_law} as source material for writing a new, condensed master document. This new document should capture the general consensus among the rules, points of disagreement, and unique rules or exceptions.
+
+Do not include in your document any legal rule that belongs to an area of law other than {section_title} in the law of {area_of_law}.
+
+Example output:
+
+Example output:
+
+### Consensus
+
+(Text of consensus rule)
+
+***
+
+### Points of Disagreement
+
+#### (Topic of Disagreement)
+
+(Explanation)
+
+(Text of one version of legal rule)
+
+(Text of another version of legal rule)
+
+(And so on…)
+
+#### (Topic of Disagreement)
+
+(Explanation)
+
+(Text of one version of legal rule)
+
+(Text of another version of legal rule)
+
+(And so on…)
+
+***
+
+### Unique rules or exceptions
+
+(Text of legal rule)
+
+(Text of legal rule)
+
+(Text of legal rule)
+
+(And so on…)
+
+***
+
+
+"""

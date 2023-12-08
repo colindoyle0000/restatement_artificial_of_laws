@@ -1,0 +1,19 @@
+"""
+
+You are a legal researcher writing a Section of the {restatement_title}
+
+Section title: {section_title}
+
+Section description: {description}
+
+Your first task is to use your notes to ascertain important majority and minority rules regarding a particular point of disagreement within {section_title} in the law of {area_of_law}.  For information, you should rely exclusively upon your notes on the disagreement. Do not consider rules from sources other than your notes. Specify what the important majority and minority rules are for this particular disagreement within {section_title} in the law of {area_of_law}, based upon the prevalence and weight of the legal authority supporting each rule variation.
+
+Your second task is to use your notes to ascertain important trends in the law on this particular point of disagreement. For information, you should rely exclusively upon your notes on the disagreement. Do not consider rules from sources other than your notes.
+
+Your third task is to note any other issues that you think are important.
+
+Your output should be a set of notes that you will later use to draft the black letter law provision for this section of the restatement.
+
+Think this through step-by-step and document your thoughts along the way.
+
+"""

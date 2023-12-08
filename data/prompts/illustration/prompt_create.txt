@@ -1,0 +1,57 @@
+"""
+
+You are a legal researcher writing a Section of the {restatement_title}
+
+Section title: {section_title}
+
+Section description: {description}
+
+A Section consists of three parts: a black-letter provision, Comment explicating, analyzing, and illustrating the black letter and its application, and a Reporter’s Notes explaining the sources relied upon in formulating the provision and its attendant Comment and setting forth its relationship to current law.
+
+Your current task is one step in that sub-project: to write the illustration or illustrations for one part of the Comment for the issue of {section_title} in the law of {area_of_law}.
+
+To help you develop illustrations, you should rely upon your plan for illustrations, the black-letter-law provision, the Comment, and relevant casebriefs.
+
+Illustrations are hypothetical examples of how the black-letter rule or principle under discussion applies to specific factual situations. Follow your plan for illustrations to create each illustration on the list. Retain the numbering of the illustrations from your plan.
+
+To be effective, Illustrations need to be concise and limited to the facts essential to demonstrating the functioning of the precise rule or principle under discussion. The facts set forth should point unambiguously to a single definitive resolution, which is stated at the conclusion of the Illustration.
+
+Illustrations demonstrate fact patterns in which the rule or principle at issue either clearly applies or clearly does not. To show more fully the intersection of fact and law in the area between these clearly demarcated boundaries, the Reporter should consider developing a series of related Illustrations, in each of which a single fact is changed, which may or may not change the result but which as a whole reveals a spectrum of possible outcomes. Following the first Illustration in such a series, subsequent Illustrations may begin: “Same facts as Illustration 1, except that....”
+
+Cases. Actual cases are frequently excellent sources for Illustrations. Such cases, however, inevitably include far more facts and issues than are suitable for an Illustration. A Reporter should modify, simplify, and adapt both the facts and the resolution of particular cases in constructing an Illustration. 
+
+The actual case used for an Illustration should not be referenced or cited. The names of the parties in the case should be changed to generic names. The facts should be simplified and adapted to the needs of the Illustration. 
+
+Brief Illustrations are generally preferable to lengthy ones. The narration of each Illustration’s facts is ordinarily set forth primarily in the present tense. Illustrations may be gender specific in referring to the persons who inhabit them, but they should avoid gender stereotyping. It is easier for a reader to follow the relationships, factual and legal, among the actors in an Illustration if they are identified either by proper name or by legal category. For example: Arthur and Betty, Husband and Wife, Settlor and Trustee.
+
+Your final output should contain only the illustration or illustrations that you have written. No other text or commentary should be included. Each Illustration or group of Illustrations is introduced by the boldface heading, “Illustration:” or “Illustrations:” 
+
+Here are examples from other Restatements of Law:
+
+**Illustration:**
+
+1. Plaintiff sues Defendant. The applicable statute requires that notice of the action be delivered to someone of suitable age and discretion at the defendant's last known address. At Plaintiff's behest, Agent delivers the notice to an adult at what is Defendant's last known address according to the records of the Postal Service and the telephone company. Defendant does not in fact ever receive the notice. Adequate notice has been given. Compare Illustration 7.
+
+**Illustration:** 
+
+1. Paul permits Anna, Paul's 12-year-old child, to use Paul's computer, for which Paul has arranged Internet access. Paul has configured the computer such that, once the user is inside the website of T.com, a retailer of books, it is possible to order any particular book title by clicking on a button labeled “Buy It Now.” Clicking on “Buy It Now” transmits the order to T.com, along with Paul's e-mail address, credit-card number, and password, all of which Paul has registered with T.com. 
+
+   With Paul's consent, Anna enters an order for many books from T.com. Paul is bound to a contract with T.com, although Anna lacks capacity to make contracts that are enforceable against Anna because Anna is a minor. The computer itself is an instrumentality that Paul has chosen to use in interacting with T, and not Paul's agent, because it is not a person."""
+
+**Illustration:**
+
+1. Paula, who deals in used cars, employs Anne as a retail salesperson. Anne is not authorized to make public statements on behalf of Paula. Anne is interviewed on a local television program and, without Paula's consent, falsely accuses a competitor of Paula's of engaging in illegal sales practices. Anne knows these statements to be false. Paula watches the television program and, the next day, congratulates Anne on Anne's television appearance. Paula has ratified Anne's tortious conduct.
+
+**Illustrations:**
+
+2. Same facts as Illustration 1, except that Paula, who knows of the statement Anne made during Anne's television appearance, says nothing to Anne or anyone else about it. It may be found that Paula has ratified Anne's conduct.
+
+3. Paula owns an import business, which Anne runs. Paula authorizes Anne to negotiate the terms of a sale of the business to Tristin but does not authorize Anne to execute the sales agreement. Anne negotiates and executes an agreement to sell the business to Tristin. Anne tells Tristin that although Anne's authority does not extend to executing the agreement, Anne is certain that Tristin will approve if Anne does so. Paula reviews the agreement after Anne executes it but does not tell Tristin that Paula repudiates it. Paula has ratified the agreement.
+
+4. Same facts as Illustration 3, except that, as Tristin knows, Paula enters the hospital for major surgery immediately after Paula learns that Anne has executed the agreement. It may be found that Paula's failure to object to Anne's execution of the sales agreement does not, for some period of time reasonable in light of Paula's medical condition, ratify Anne's unauthorized execution of the agreement.
+
+**Illustration:**
+
+1. Carl makes Bert an offer, inviting acceptance by telegram, and Bert duly telegraphs an acceptance. Agatha purports to revoke the offer in person or by telephone or telegraph, but the attempted revocation is received by Bert after the telegram of acceptance is dispatched. There is no effective revocation.
+
+“”“
