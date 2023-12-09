@@ -208,4 +208,7 @@ outputs/
 # Ignore cases folder
 data/cases/
 
+# Ignore logs folder
+notebooks/logs/
+
 # End of https://www.toptal.com/developers/gitignore/api/osx,python

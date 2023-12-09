@@ -70,7 +70,8 @@ from datetime import datetime
 # Set up logger
 logger = logging.getLogger('restatement')
 
-def shorten_title(title):
+
+def shorten_title(title) -> str:
     """Shorten a string to the first line, remove section information, limit to 15 characters."""
     # Split at "\n" and take the first part
     title_short = title.split("\n", 1)[0]
@@ -80,11 +81,13 @@ def shorten_title(title):
     title_short = title_short[:15]
     return title_short
 
+
 def get_timestamp():
     """Return a timestamp in the format YYYY_MM_DD_HH_MM_SS."""
     now = datetime.now()
     yearmonthdaytime = now.strftime("%Y_%m_%d_%H_%M_%S")
     return yearmonthdaytime
+
 
 def get_date():
     """Return a date in the format YYYY_MM_DD."""
@@ -92,19 +95,25 @@ def get_date():
     yearmonthday = now.strftime("%Y_%m_%d")
     return yearmonthday
 
+
 def set_prompt(prompt, prompt_path):
     """Update prompt to match any changes to txt files"""
-    with open(prompt_path, 'r', encoding="utf-8") as f:
-        prompt = f.read()
-    return prompt
+    try:
+        with open(prompt_path, 'r', encoding="utf-8") as f:
+            prompt = f.read()
+        return prompt
+    except FileNotFoundError:
+        logger.warning("File not found: %s", prompt_path)
+
 
 def replace_prompt_variables(prompt, section_title, restatement_title, area_of_law, description):
     """Insert content from title, area of law, and description to the prompts."""
     prompt = prompt.replace('{self.section_title}', section_title)\
-                    .replace('{self.restatement_title}', restatement_title)\
-                        .replace('{self.area_of_law}', area_of_law)\
-                            .replace('{self.description}', description)
+        .replace('{self.restatement_title}', restatement_title)\
+        .replace('{self.area_of_law}', area_of_law)\
+        .replace('{self.description}', description)
     return prompt
+
 
 def set_full_prompt(prompt_path, section):
     """Set prompt string to text from .txt file and insert variables from section.
@@ -113,10 +122,11 @@ def set_full_prompt(prompt_path, section):
     with open(prompt_path, 'r', encoding="utf-8") as f:
         output = f.read()
         output = output.replace('{section_title}', section.section_title)\
-                        .replace('{restatement_title}', section.restatement_title)\
-                            .replace('{area_of_law}', section.area_of_law)\
-                                .replace('{description}', section.description)
+            .replace('{restatement_title}', section.restatement_title)\
+            .replace('{area_of_law}', section.area_of_law)\
+            .replace('{description}', section.description)
     return output
+
 
 def save_used_prompts(title, prompt_lst):
     """Save the prompts used within a method to a string.

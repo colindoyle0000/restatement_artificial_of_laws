@@ -1,6 +1,7 @@
 """Resolve class for resolving points of disagreement.
 
-This class is a subclass of `Discern`, which creates instances of this class for each point of disagreement that needs to be resolved.
+This class is a subclass of `Discern`, which creates instances of this class for each point of 
+disagreement that needs to be resolved.
 
 ### Attributes
 
@@ -15,7 +16,8 @@ This class is a subclass of `Discern`, which creates instances of this class for
 - `authority_sum`: A string summarizing the authority for each version of the rule.
 - `majority`: A string representing notes on the majority rule and trends.
 - `reasoning`: A string representing notes on the reasoning behind the rules from caselaw.
-- `fit`: A string representing notes on the rule that fits within the body of law, produces the best outcomes, and aligns with the purpose of Restatements of Law.
+- `fit`: A string representing notes on the rule that fits within the body of law, produces the 
+best outcomes, and aligns with the purpose of Restatements of Law.
 - `decide`: A string representing notes on the decision.
 - `new_rule`: A string representing the new rule based on the decision.
 - `prompt_lst`: A list of prompts.
@@ -25,12 +27,15 @@ This class is a subclass of `Discern`, which creates instances of this class for
 
 - `get_rules(self)`: Creates a legal rule for each side of the disagreement.
 - `get_authority(self)`: Gets the legal authority for each rule in `self.rules_lst`.
-- `set_authority_sum(self)`: Sets a summary of authority information collected in the `get_authority` method.
+- `set_authority_sum(self)`: Sets a summary of authority information collected in the 
+`get_authority` method.
 - `get_majority(self)`: Creates notes on the majority rule and trends.
 - `get_reasoning(self)`: Gets the reasoning behind the rules from caselaw.
-- `get_fit(self)`: Creates notes on the rule that fits within the body of law, produces the best outcomes, and aligns with the purpose of Restatements of Law.
+- `get_fit(self)`: Creates notes on the rule that fits within the body of law, produces the 
+best outcomes, and aligns with the purpose of Restatements of Law.
 - `get_decide(self)`: Decides on the best rule based on the information gathered so far.
-- `write_rule(self)`: Writes the rule for this particular disagreement based on the decision made in the `get_decide` method.
+- `write_rule(self)`: Writes the rule for this particular disagreement based on the decision 
+made in the `get_decide` method.
 - `get_outputs(self)`: Returns the outputs from this class.
 - `save_attributes(self)`: Saves the attributes to a JSON file.
 - `load_attributes(self)`: Loads the attributes from a JSON file.
@@ -40,29 +45,21 @@ import logging
 import textwrap
 import os
 
+from src.baseclass import BaseClass
 from src.utils_file import (
-    get_root_dir,
-    save_to_json,
-    load_from_json,
-    save_prompts_to_md
+    get_root_dir
 )
 from src.utils_llm import (
     list_to_token_list,
     num_tokens,
     sleep_for_tokens,
-    string_to_token_list,
-    llm_call,
     llm_loop,
-    llm_loop_gpt4,
-    llm_condense_string,
     llm_router,
     llm_router_gpt4,
     trim_part_for_tokens
 )
 
 from src.utils_string import (
-    set_prompt,
-    replace_prompt_variables,
     set_full_prompt,
     get_timestamp,
     save_used_prompts
@@ -71,7 +68,8 @@ from src.utils_string import (
 # Set up logger
 logger = logging.getLogger('restatement')
 
-class Resolve:
+
+class Resolve(BaseClass):
     """Class for resolving points of disagreement.
     This is a subclass of Discern, which creates instances of this class for each point of 
     disagreement that needs to be resolved.
@@ -84,12 +82,11 @@ class Resolve:
         discern,
         section,
         issue
-        ):
-
+    ):
+        super().__init__(section)
         self.briefcases = briefcases
         self.extract = extract
         self.discern = discern
-        self.section = section
         self.issue = issue
 
         # Different versions of the rule within the disagreement
@@ -105,7 +102,7 @@ class Resolve:
         self.majority = ""
         # Notes on the reasoning behind the rules from caselaw
         self.reasoning = ""
-        # Notes on rule that fits within body of law, produces best outcomes, and aligns 
+        # Notes on rule that fits within body of law, produces best outcomes, and aligns
         # with purpose of Restatements of Law
         self.fit = ""
         # Notes on decision
@@ -113,22 +110,18 @@ class Resolve:
         # New rule based on decision
         self.new_rule = ""
 
-        # List of prompts
-        self.prompt_lst = []
-        # String of prompts
-        self.prompt_str = ""
-    
     def get_rules(self):
         """Create legal rule for each side of disagreement.
         """
         # Set prompts for LLM.
         # Set system prompt with contents from txt file
         prompt_system = set_full_prompt(
-            os.path.join(get_root_dir(), "data", "prompts", 'resolve', "prompt_rules.txt"),
+            os.path.join(get_root_dir(), "data", "prompts",
+                         'resolve', "prompt_rules.txt"),
             self.section
         )
         prompt_human = textwrap.dedent(
-        """
+            """
         Your notes:
         {query}
         """)
@@ -143,7 +136,8 @@ class Resolve:
         )
 
         # Call on LLM to decide what points of disagreement to include in the final rule.
-        logger.info("get_rules: Creating legal rule for each side of disagreement.")
+        logger.info(
+            "get_rules: Creating legal rule for each side of disagreement.")
         output, total_tokens, model, prompt_lst = llm_router_gpt4(
             prompt_system,
             prompt_human,
@@ -157,7 +151,8 @@ class Resolve:
         self.rules_lst = output['text'].split('***')
 
         # Save the prompts used in this method
-        self.prompt_lst.append(save_used_prompts("## Rules prompts", prompt_lst))
+        self.prompt_lst.append(save_used_prompts(
+            "## Rules prompts", prompt_lst))
 
         # Sleep for tokens
         sleep_for_tokens(total_tokens, model)
@@ -173,8 +168,9 @@ class Resolve:
         # [3] Number of cases (calculated by measuring the length of [2])
         # [4] Casebriefs of legal authority for that rule as list
         # [5] Reasoning behind the rule from casebriefs as string
-        self.authority_lst = [[rule, '', [], 0, [], ""] for rule in self.rules_lst]
-        
+        self.authority_lst = [[rule, '', [], 0, [], ""]
+                              for rule in self.rules_lst]
+
         for rule in self.authority_lst:
             rule[1] = ""
             # Get rules from self.rules_lst as a string, except for current rule.
@@ -185,12 +181,13 @@ class Resolve:
             # Set prompts for LLM.
             # Set system prompt with contents from txt file
             prompt_system = set_full_prompt(
-            os.path.join(get_root_dir(), "data", "prompts", 'resolve', "prompt_authority.txt"),
-            self.section
-        )
-            # Set human prompt amd query. Note that {query} is required for LLMChain to work.        
+                os.path.join(get_root_dir(), "data", "prompts",
+                             'resolve', "prompt_authority.txt"),
+                self.section
+            )
+            # Set human prompt amd query. Note that {query} is required for LLMChain to work.
             prompt_human = textwrap.dedent(
-            f"""
+                f"""
             This version of legal rule: 
             {rule[0]}
             
@@ -198,7 +195,7 @@ class Resolve:
             {other_rules}
             """)
             prompt_human += textwrap.dedent(
-            """
+                """
             Your notes:
             {query}
             """)
@@ -210,7 +207,8 @@ class Resolve:
             )
 
             # Call on LLM to loop through copy_token_list to get legal authority for each rule.
-            logger.info("get_authority: Calling on LLM to get legal authority for each rule.")
+            logger.info(
+                "get_authority: Calling on LLM to get legal authority for each rule.")
             output_list, prompt_lst = llm_loop(
                 prompt_system,
                 prompt_human,
@@ -227,7 +225,8 @@ class Resolve:
             rule[3] = len(rule[2])
 
             # Save the prompts used in this method
-            self.prompt_lst.append(save_used_prompts("## Authority prompts", prompt_lst))
+            self.prompt_lst.append(save_used_prompts(
+                "## Authority prompts", prompt_lst))
 
     def set_authority_sum(self):
         """Set summary of authority information collected in get_authority method.
@@ -235,7 +234,7 @@ class Resolve:
         self.authority_sum = ""
         for authority in self.authority_lst:
             string = textwrap.dedent(
-            f"""
+                f"""
             Provision: 
             {authority[0]}
             Cases supporting provision:
@@ -245,13 +244,13 @@ class Resolve:
             """
             )
             self.authority_sum += string
-        
+
         # If summary exceeds token limits, remove list of cases supporting each provision.
         if num_tokens(self.authority_sum) > self.section.llm_settings.max_tokens:
             self.authority_sum = ""
             for authority in self.authority_lst:
                 string = textwrap.dedent(
-                f"""
+                    f"""
                 Provision: 
                 {authority[0]}
                 Number of cases supporting provision:
@@ -259,18 +258,19 @@ class Resolve:
                 """
                 )
                 self.authority_sum += string
-    
+
     def get_majority(self):
         """Create notes on majority rule and trends.
         """
         # Set prompts for LLM.
         # Set system prompt with contents from txt file
         prompt_system = set_full_prompt(
-            os.path.join(get_root_dir(), "data", "prompts", 'resolve', "prompt_majority.txt"),
+            os.path.join(get_root_dir(), "data", "prompts",
+                         'resolve', "prompt_majority.txt"),
             self.section
         )
         prompt_human = textwrap.dedent(
-        """
+            """
         Your notes:
         {query}
         """)
@@ -298,7 +298,8 @@ class Resolve:
         self.majority = output['text']
 
         # Save the prompts used in this method
-        self.prompt_lst.append(save_used_prompts("## Majority prompts", prompt_lst))
+        self.prompt_lst.append(save_used_prompts(
+            "## Majority prompts", prompt_lst))
 
         # Sleep for tokens
         sleep_for_tokens(total_tokens, model)
@@ -313,7 +314,8 @@ class Resolve:
             for case in rule[2]:
                 case_name = f"Case Name {case}"
                 # Retrieve relevant casebrief
-                relevant_brief = self.briefcases.briefs_db.similarity_search(case_name, k=1)
+                relevant_brief = self.briefcases.briefs_db.similarity_search(
+                    case_name, k=1)
                 # Convert relevant_brief to a list of strings
                 relevant_brief = [doc.page_content for doc in relevant_brief]
                 # Join the list of strings into one string
@@ -329,17 +331,18 @@ class Resolve:
             # Set prompts for LLM.
             # Set system prompt with contents from txt file
             prompt_system = set_full_prompt(
-                os.path.join(get_root_dir(), "data", "prompts", 'resolve', "prompt_reasoning.txt"),
+                os.path.join(get_root_dir(), "data", "prompts",
+                             'resolve', "prompt_reasoning.txt"),
                 self.section
             )
             prompt_human = textwrap.dedent(
-            f"""
+                f"""
             Legal rule: 
             {rule[0]}
             
             """)
             prompt_human += textwrap.dedent(
-            """
+                """
             Your notes:
             {query}
             """)
@@ -349,8 +352,10 @@ class Resolve:
                 Condense this text but do not alter the meaning.
                 """
             )
-            # Call on LLM to loop through briefs_token_list to get reasoning behind the rules from caselaw.
-            logger.info("get_reasoning: Getting reasoning behind rule from caselaw.")
+            # Call on LLM to loop through briefs_token_list to get reasoning
+            # behind the rules from caselaw.
+            logger.info(
+                "get_reasoning: Getting reasoning behind rule from caselaw.")
             output_list, prompt_lst = llm_loop(
                 prompt_system,
                 prompt_human,
@@ -358,7 +363,7 @@ class Resolve:
                 prompt_condense,
                 self.section.llm_settings
             )
-            
+
             # Turn the list into one string.
             rule[5] = '\n'.join(output_list)
 
@@ -366,7 +371,7 @@ class Resolve:
         self.reasoning = ""
         for rule in self.authority_lst:
             string = textwrap.dedent(
-            f"""
+                f"""
             Rule: 
             {rule[0]}
 
@@ -376,7 +381,8 @@ class Resolve:
             )
             self.reasoning += string
         # Save the prompts used in this method
-        self.prompt_lst.append(save_used_prompts("## Reasoning prompts", prompt_lst))
+        self.prompt_lst.append(save_used_prompts(
+            "## Reasoning prompts", prompt_lst))
 
     def get_fit(self):
         """Create notes on rule that fits within body of law, produces best outcomes, and aligns
@@ -385,18 +391,19 @@ class Resolve:
         # Set prompts for LLM.
         # Set system prompt with contents from txt file
         prompt_system = set_full_prompt(
-            os.path.join(get_root_dir(), "data", "prompts", 'resolve', "prompt_fit.txt"),
+            os.path.join(get_root_dir(), "data", "prompts",
+                         'resolve', "prompt_fit.txt"),
             self.section
         )
 
         prompt_human = textwrap.dedent(
-        """
+            """
         
         Your notes:
         {query}
         """)
         query = textwrap.dedent(
-        f"""
+            f"""
         Settled part of legal rule:
         {self.discern.consensus_rule}
         Point of disagreement:
@@ -414,7 +421,10 @@ class Resolve:
 
         # Call on LLM to create notes on rule that fits within body of law, produces best outcomes,
         # and aligns with purpose of Restatements of Law.
-        logger.info("get_fit: Creating notes on rule that fits within body of law, produces best outcomes, and aligns with purpose of Restatements of Law.")
+        logger.info(
+            "get_fit: Creating notes on rule that fits within body of law, "
+            "produces best outcomes, and aligns with purpose of Restatements of Law."
+        )
         output, total_tokens, model, prompt_lst = llm_router(
             prompt_system,
             prompt_human,
@@ -438,17 +448,18 @@ class Resolve:
         # Set prompts for LLM.
         # Set system prompt with contents from txt file
         prompt_system = set_full_prompt(
-            os.path.join(get_root_dir(), "data", "prompts", 'resolve', "prompt_decide.txt"),
+            os.path.join(get_root_dir(), "data", "prompts",
+                         'resolve', "prompt_decide.txt"),
             self.section
         )
 
         prompt_human = textwrap.dedent(
-        """
+            """
         Your notes:
         {query}
         """)
         query = textwrap.dedent(
-        f"""
+            f"""
         Settled part of legal rule:
         {self.discern.consensus_rule}
         Point of disagreement:
@@ -482,7 +493,8 @@ class Resolve:
         self.decide = output['text']
 
         # Save the prompts used in this method
-        self.prompt_lst.append(save_used_prompts("## Decide prompts", prompt_lst))
+        self.prompt_lst.append(save_used_prompts(
+            "## Decide prompts", prompt_lst))
 
         # Sleep for tokens
         sleep_for_tokens(total_tokens, model)
@@ -493,16 +505,17 @@ class Resolve:
         # Set prompts for LLM.
         # Set system prompt with contents from txt file
         prompt_system = set_full_prompt(
-            os.path.join(get_root_dir(), "data", "prompts", 'resolve', "prompt_write.txt"),
+            os.path.join(get_root_dir(), "data", "prompts",
+                         'resolve', "prompt_write.txt"),
             self.section
         )
         prompt_human = textwrap.dedent(
-        """
+            """
         Your notes:
         {query}
         """)
         query = textwrap.dedent(
-        f"""
+            f"""
         Settled part of legal rule:
         {self.discern.consensus_rule}
         Point of disagreement:
@@ -519,9 +532,10 @@ class Resolve:
             Condense this text but do not alter the meaning.
             """
         )
-        
+
         # System prompt may be too long for LLM. Trim it if necessary.
-        logger.debug("Token length of system prompt: %s", num_tokens(prompt_system))
+        logger.debug("Token length of system prompt: %s",
+                     num_tokens(prompt_system))
         remainder = prompt_human + query
         prompt_system = trim_part_for_tokens(
             prompt_system,
@@ -544,7 +558,8 @@ class Resolve:
         self.new_rule = output['text']
 
         # Save the prompts used in this method
-        self.prompt_lst.append(save_used_prompts("## Revise prompts", prompt_lst))
+        self.prompt_lst.append(save_used_prompts(
+            "## Revise prompts", prompt_lst))
 
         # Sleep for tokens
         sleep_for_tokens(total_tokens, model)
@@ -553,24 +568,24 @@ class Resolve:
         """Get outputs from this class.
         """
         return self.__dict__
-        
+
     def save_attributes(self):
         """Save attributes to JSON file
         """
         filename = os.path.join(self.section.path_json, "resolve.json")
-        save_to_json(self, filename)
-    
+        self.save_to_json(filename)
+
     def load_attributes(self):
         """Load attributes from JSON file.
         """
         filename = os.path.join(self.section.path_json, "resolve.json")
-        load_from_json(self, filename)
+        self.load_from_json(filename)
 
     def save_to_md(self):
         """Save prompts and outputs to markdown file.
         """
         # Save prompts to markdown file
-        save_prompts_to_md(self, "resolve_prompts")
+        self.save_prompts_to_md("resolve_prompts")
         # Save outputs to markdown file
         # Set path for markdown file.
         timestamp = get_timestamp()

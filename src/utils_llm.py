@@ -43,7 +43,8 @@ sleep_for_time_tokens(
         model (str): The model to use. Defaults to 'gpt-4'.
 
 sleep_for_tokens(tokens: int, model: str = 'gpt-4') -> None
-    Sleeps for the time needed to wait before the next request to the language model. The number of tokens is provided as an argument.
+    Sleeps for the time needed to wait before the next request to the language model. 
+    The number of tokens is provided as an argument.
     Parameters:
         tokens (int): The number of tokens.
         model (str): The model to use. Defaults to 'gpt-4'.
@@ -106,8 +107,8 @@ list_to_db(
     Creates a vector database based on a list of strings.
     Parameters:
         lst (List[str]): The list of strings to create the database from.
-        name (str): The name of the database. Defaults to 'vectordb'.
-        path (str): The path to the database. Defaults to the root directory plus '/ data / vectordb'.
+        name (str): Name of the database. Defaults to 'vectordb'.
+        path (str): Path to the database. Defaults to the root directory plus '/ data / vectordb'.
         settings (LLMSettings): The settings for the database.
     Returns:
         A Chroma object representing the vector database.
@@ -163,22 +164,13 @@ from langchain import LLMChain
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import (
     ChatPromptTemplate,
-    PromptTemplate,
     SystemMessagePromptTemplate,
-    AIMessagePromptTemplate,
     HumanMessagePromptTemplate,
-)
-from langchain.schema import (
-    AIMessage,
-    HumanMessage,
-    SystemMessage
 )
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.text_splitter import (
-    TokenTextSplitter,
-    RecursiveCharacterTextSplitter
+    TokenTextSplitter
 )
-from langchain.document_loaders import TextLoader
 from langchain.vectorstores import Chroma
 from src.utils_file import get_root_dir
 
@@ -636,7 +628,7 @@ def llm_router_gpt4(
         prompt_lst.append(chat_prompt_str)
         return (output, total_tokens, model, prompt_lst)
     else:
-        raise ValueError("After %s attempts, the input is still too long." % settings.max_attempts)
+        raise ValueError(f"After {settings.max_attempts} attempts, the input is still too long.")
 
 def llm_loop(
         prompt_template,

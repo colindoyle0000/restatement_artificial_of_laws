@@ -1,8 +1,10 @@
-"""This class is used for creating an artificial restatement section. It is a composite class that manages the classes that build a restatement. Any individual restatement section should be created as an instance of this class.
+"""Section class is a composite class that manages the classes that build a restatement.
+Any individual restatement section should be created as an instance of this class.
 
 __init__(self, llm_settings: LLMSettings = LLMSettings())
     Initializes a new instance of the Section class. 
-    It sets up various properties and class instances that will be used throughout the restatement creation process.
+    It sets up various properties and class instances that will be used throughout the restatement
+    creation process.
 
 set_section_title(self, title: str)
     Sets the title of the section. 
@@ -41,7 +43,8 @@ set_llm_settings(
     chunk_size_long: int = None,
     max_attempts: int = None
 )
-    Sets the LLM settings. With this function, only the settings that you want to change need to be passed.
+    Sets the LLM settings. 
+    With this function, only the settings that you want to change need to be passed.
     
 
 process_load_cases()
@@ -62,11 +65,11 @@ process_extract()
 
 process_discern()
     This method executes each necessary method of the `Discern` class. 
-    It creates an instance of `Discern`, discerns consensus rule, decides what points of disagreement to include,
-    resolves each point of disagreement, rewrites rule following the resolve process,
-    creates notes on making rule more clear and logical, creates a revised final rule, 
-    sets explanation of rule for later classes to use, saves attributes to JSON file, 
-    and saves prompts and outputs to markdown file.
+    It creates an instance of `Discern`, discerns consensus rule, decides what points of 
+    disagreement to include, resolves each point of disagreement, rewrites rule following 
+    the resolve process, creates notes on making rule more clear and logical, creates a 
+    revised final rule, sets explanation of rule for later classes to use, saves attributes 
+    to JSON file, and saves prompts and outputs to markdown file.
 
 process_comment()
     This method executes each necessary method of the `Comment` class. 
@@ -104,14 +107,14 @@ import logging
 import re
 import textwrap
 import os
+import json
 
 from pathlib import Path
 
 from src.utils_file import (
-    get_root_dir,
-    save_to_json,
-    load_from_json
+    get_root_dir
 )
+
 from src.utils_string import (
     shorten_title,
     get_timestamp,
@@ -158,7 +161,7 @@ class Section:
         # Filepath for cases
         self.cases_folder = ""
         self.cases_path = ""
-        
+
         # Filepath for saving data from this section
         self.path = ""
         self.path_json = ""
@@ -189,12 +192,12 @@ class Section:
         self.final_draft = ""
 
     def set_section_title(self, title: str):
-        """ Set the title of the section. The title should be the legal issue that the section addresses.
+        """ Set the title of the section. 
+        The title should be the legal issue that the section addresses.
         """
         self.section_title = title
         self.section_title_short = shorten_title(self.section_title)
-        
-    
+
     def set_area_of_law(self, area_of_law: str):
         """ Set the title of the area of law. (e.g., Property, Torts, Contracts, Judgments)
         The title will be capitalized and used to automatically create the title of the restatement.
@@ -202,7 +205,8 @@ class Section:
         # Capitalize first letter of each word in area_of_law
         area_of_law = area_of_law.title()
         # Use regex to exclude "of" and "in" from being capitalized
-        area_of_law = re.sub(r'\b(?!of\b|in\b)\w+', lambda m: m.group(0).capitalize(), area_of_law)
+        area_of_law = re.sub(r'\b(?!of\b|in\b)\w+',
+                             lambda m: m.group(0).capitalize(), area_of_law)
         self.area_of_law = area_of_law
         self.restatement_title = f"Restatement of {self.area_of_law}"
 
@@ -211,38 +215,42 @@ class Section:
         Needed only if you don't want the title to be automatically generated from the area of law.
         """
         self.restatement_title = title
-    
+
     def set_description(self, description: str):
         """ Set the description of the section.
         This description can give the LLM some context for what particular legal issues the section 
         should address and what legal issues will be addressed by other sections.
         """
         self.description = description
-        
+
     def set_cases_path(self, path: str):
         """ Set the path to the folder where the cases are stored.
         """
         self.cases_path = path
         path = Path(self.cases_path)
         if not path.exists():
-            raise FileNotFoundError(f"No folder found at path: {self.cases_path}")
-    
+            raise FileNotFoundError(
+                f"No folder found at path: {self.cases_path}")
+
     def set_cases_folder(self, folder):
         """Set name of folder within directory where cases are stored."""
         self.cases_folder = folder
         # Set the case path to match any changes to the case folder name
-        self.cases_path = str(get_root_dir()) + f"/data/cases/{self.cases_folder}"
+        self.cases_path = str(get_root_dir()) + \
+            f"/data/cases/{self.cases_folder}"
         path = Path(self.cases_path)
         # Check if the folder exists
         if not path.exists():
-            raise FileNotFoundError(f"No folder found at path: {self.cases_path}")
+            raise FileNotFoundError(
+                f"No folder found at path: {self.cases_path}")
 
     def set_path(self, name: str = None, date: str = None):
         """Set the path for saving data to file."""
         # If name or date are not passed, use the default directory.
         if name is None or date is None:
             date = get_date()
-            self.path = os.path.join(get_root_dir(), "outputs", self.section_title_short, date)
+            self.path = os.path.join(
+                get_root_dir(), "outputs", self.section_title_short, date)
         # If a directory is passed, use that directory.
         else:
             self.path = os.path.join(get_root_dir(), "outputs", name, date)
@@ -263,7 +271,7 @@ class Section:
 
     def set_llm_settings(
         self,
-        embeddings = None,
+        embeddings=None,
         model: str = None,
         max_tokens: int = None,
         model_long: str = None,
@@ -299,7 +307,7 @@ class Section:
         """Execute each necessary method of LoadCases class.
         """
         # Create instance of LoadCases
-        self.loadcases = LoadCases(section = self)
+        self.loadcases = LoadCases(section=self)
         # Load the cases as a list
         self.loadcases.rtf_to_list()
 
@@ -308,9 +316,9 @@ class Section:
         """
         # Create instance of BriefCases
         self.briefcases = BriefCases(
-            loadcases = self.loadcases,
-            section = self
-            )
+            loadcases=self.loadcases,
+            section=self
+        )
         # Remove synopses from each case in list of cases
         self.briefcases.remove_synopsis()
         # Create briefs from list of cases
@@ -429,12 +437,12 @@ class Section:
 
     def set_final_draft(self):
         """Set the final draft of the section based on prior outputs.
-        Note that if you experiment with different classes performing the same role, this will work if 
-        the final output of that class is stored in the right attribute name in the Section instance.
+        Note that if you experiment with different classes performing the same role, this will work
+        if the final outputs are stored in the right attribute name in the Section instance.
         """
         # Create final draft
         self.final_draft = textwrap.dedent(
-        f"""\
+            f"""\
         **{self.restatement_title}**
         
         {self.provision_final}
@@ -447,59 +455,78 @@ class Section:
 
     def save_final_draft(self):
         """Save the final draft to a markdown file."""
-        timestamp = get_timestamp()
-        name = f"final_draft{timestamp}.md"
-        with open(os.path.join(self.path_md, name), "w", encoding="utf-8") as f:
-            f.write(self.final_draft)
+        try:
+            timestamp = get_timestamp()
+            name = f"final_draft{timestamp}.md"
+            with open(os.path.join(self.path_md, name), "w", encoding="utf-8") as f:
+                f.write(self.final_draft)
+        except IOError as e:
+            logger.error("Failed to save final draft: %s", e)
 
     def save_attributes(self):
-        """Save attributes to JSON file
+        """Save Section attributes attributes of each existing class to JSON file.
         """
         filename = os.path.join(self.path_json, 'section.json')
-        save_to_json(self, filename)
+        serializable_dict = {}
+        for key, value in self.__dict__.items():
+            try:
+                json.dumps(value)
+                serializable_dict[key] = value
+            except TypeError:
+                logger.warning("Attribute not serializable: %s. Skipped.", key)
+
+        with open(filename, 'w', encoding="utf-8") as f:
+            json.dump(serializable_dict, f)
+
         # Save attributes of each class to JSON file.
-        attributes = [self.briefcases, 
-                      self.extract, 
-                      self.discern, 
-                      self.comment, 
-                      self.illustration, 
+        attributes = [self.briefcases,
+                      self.extract,
+                      self.discern,
+                      self.comment,
+                      self.illustration,
                       self.reporter
-                    ]
+                      ]
         for attr in attributes:
             if attr is not None:
                 attr.save_attributes()
-    
+
     def load_attributes(self, filename: str = None):
         """Load attributes from JSON file.
         """
         # If no filename is passed, use the default filename.
         if filename is None:
             filename = os.path.join(self.path_json, 'section.json')
-        load_from_json(self, filename)
+        try:
+            with open(filename, 'r', encoding="utf-8") as f:
+                data = json.load(f)
+            for key, value in data.items():
+                setattr(self, key, value)
+        except FileNotFoundError:
+            logger.warning("File not found: %s", filename)
         # Create instances of each class and load attributes from JSON file.
-        
+
         self.loadcases = LoadCases(section=self)
         self.loadcases.rtf_to_list()
-        
+
         self.briefcases = BriefCases(
-            loadcases = self.loadcases,
-            section = self
+            loadcases=self.loadcases,
+            section=self
         )
         self.briefcases.load_attributes()
         self.briefcases.load_briefs_db()
-        
+
         self.extract = Extract(
             briefcases=self.briefcases,
             section=self
         )
         self.extract.load_attributes()
-        
+
         self.discern = Discern(
             extract=self.extract,
             section=self
         )
         self.discern.load_attributes()
-        
+
         self.comment = Comment(
             briefcases=self.briefcases,
             groups_str=self.groups_str,
@@ -508,7 +535,7 @@ class Section:
             section=self
         )
         self.comment.load_attributes()
-        
+
         self.illustration = Illustration(
             briefcases=self.briefcases,
             provision=self.provision_final,
@@ -516,7 +543,7 @@ class Section:
             section=self
         )
         self.illustration.load_attributes()
-        
+
         self.reporter = Reporter(
             briefcases=self.briefcases,
             comment=self.comment,

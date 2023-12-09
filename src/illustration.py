@@ -14,11 +14,18 @@
 - `prompt_temp`: A temporary list of prompts.
 
 ### Methods
-- __init__(self, briefcases, provision, comment, section): Initializes the class with the given parameters. It also initializes several lists and strings that will be used later.
-- create_plan(self, comment, prior_plans): Creates a plan for illustrations for a given comment. It sets up prompts for the language model, trims the query to fit under the token limit, and calls the llm_router method to create the plan.
-- create_plans(self, start_index=0): Loops through comments, creating plans for each. It can start from a specified index if a previous run was interrupted.
-- create_ill(self, comment, plan): Creates illustrations for a given comment. It sets up prompts for the language model, trims the query to fit under the token limit, and calls the llm_router method to create the illustration.
-- create_ills(self, start_index=0): Loops through comments, creating illustrations for each. It can start from a specified index if a previous run was interrupted.
+- __init__(self, briefcases, provision, comment, section): Initializes the class with the given 
+parameters. It also initializes several lists and strings that will be used later.
+- create_plan(self, comment, prior_plans): Creates a plan for illustrations for a given comment. 
+It sets up prompts for the language model, trims the query to fit under the token limit, and 
+calls the llm_router method to create the plan.
+- create_plans(self, start_index=0): Loops through comments, creating plans for each. 
+It can start from a specified index if a previous run was interrupted.
+- create_ill(self, comment, plan): Creates illustrations for a given comment. It sets up prompts
+for the language model, trims the query to fit under the token limit, and calls the llm_router 
+method to create the illustration.
+- create_ills(self, start_index=0): Loops through comments, creating illustrations for each. 
+It can start from a specified index if a previous run was interrupted.
 - combine_ills_comments(self): Combines illustrations and comments into one list.
 - get_outputs(self): Returns the outputs from this class.
 - save_attributes(self): Saves the attributes of the class to a JSON file.
@@ -30,28 +37,15 @@ import logging
 import textwrap
 import os
 
-from langchain.vectorstores import Chroma
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.llms import OpenAI
-from langchain.schema import Document
-
+from src.baseclass import BaseClass
 from src.utils_file import (
-    get_root_dir,
-    save_to_json,
-    load_from_json,
-    save_prompts_to_md
+    get_root_dir
 )
 from src.utils_llm import (
     num_tokens,
     sleep_for_tokens,
-    string_to_token_list,
-    llm_loop_gpt4,
-    llm_condense_string,
     llm_router,
-    llm_router_gpt4,
     trim_part_for_tokens,
-    llm_call,
-    llm_call_long
 )
 from src.utils_string import (
     set_full_prompt,
@@ -62,24 +56,24 @@ from src.utils_string import (
 # Set up logger
 logger = logging.getLogger('restatement')
 
-class Illustration:
+
+class Illustration(BaseClass):
     """ Class for creating illustrations for the comments.
     """
-    
+
     def __init__(
         self,
         briefcases,
         provision,
         comment,
         section
-        ):
-
+    ):
+        super().__init__(section)
         # Initialize variables for this instance
 
         self.briefcases = briefcases
         self.provision = provision
         self.comment = comment
-        self.section = section
 
         # List of plans for illustrations
         self.plans = []
@@ -89,36 +83,34 @@ class Illustration:
         self.ills_comments = []
         # String of illustrations and comments
         self.ills_comments_str = ""
-        
-        # List of prompts
-        self.prompt_lst = []
-        # String of prompts
-        self.prompt_str = ""
+
         # Temporary list of prompts
         # This list is used within loops, then appended to prompt_list after loops are completed.
         self.prompt_temp = []
-    
-    def create_plan(self,comment, prior_plans):
+
+    def create_plan(self, comment, prior_plans):
         """Create a plan for illustration(s) for a comment.
         """
         # Set prompts for LLM.
         # Set system prompt with contents from txt file
         prompt_system = set_full_prompt(
-            os.path.join(get_root_dir(), "data", "prompts", 'illustration', "prompt_plan.txt"),
+            os.path.join(get_root_dir(), "data", "prompts",
+                         'illustration', "prompt_plan.txt"),
             self.section
         )
         # Set human prompt. Note that {query} is required for LLMChain to work.
         prompt_human = textwrap.dedent(
-        """
+            """
         Write a plan for illustrations for this part of the Comment.
         Your notes are: 
         {query}
         """
         )
-        
-        # Set query to include the provision, comment, outline of all comments, and illustration plans.
+
+        # Set query to include the provision, comment, outline of all comments,
+        # and illustration plans.
         query = textwrap.dedent(
-        f"""
+            f"""
         
         Black letter law provision:
         {self.provision}
@@ -133,8 +125,7 @@ class Illustration:
         {prior_plans}
         """
         )
-        
-        
+
         # If necessary, trim back query to fit under token limit.
         logger.debug("Token length of query: %s", num_tokens(query))
         remainder = prompt_system + prompt_human
@@ -146,7 +137,12 @@ class Illustration:
         )
 
         # Set condense prompt (typically should not be necessary)
-        prompt_condense = "Do not edit the black letter law provision or comment. Condense the prior plans for illustrations."
+        prompt_condense = textwrap.dedent(
+            """
+            Do not edit the black letter law provision, outline, or component heading.
+            Condense the casebriefs.
+            """
+        )
 
         # Call llm_router to create plan
         logger.info("create_plan: Creating plan for illustrations.")
@@ -158,7 +154,7 @@ class Illustration:
             self.section.llm_settings
         )
         return output, total_tokens, model, prompt_lst
-    
+
     def create_plans(self, start_index=0):
         """Loop through comments, creating plans for each.
         start_index can be specified if a previous run was interrupted.
@@ -170,11 +166,13 @@ class Illustration:
         # Loop through comments, creating plan(s) for each.
         logger.info("create_plans: Creating plans for illustrations.")
         for i, comment in enumerate(self.comment.comments[start_index:]):
-            logger.info("create_plans: Processing comment %s of %s", i+start_index+1, len(self.comment.comments))
+            logger.info("create_plans: Processing comment %s of %s",
+                        i+start_index+1, len(self.comment.comments))
             # Set prior plans from plans list.
             prior_plans = '\n'.join(self.plans)
             # Create plan for comment.
-            output, total_tokens, model, prompt_lst = self.create_plan(comment, prior_plans)
+            output, total_tokens, model, prompt_lst = self.create_plan(
+                comment, prior_plans)
 
             # Append plan to plans list.
             plan = output['text']
@@ -182,38 +180,42 @@ class Illustration:
 
             # Add prompts to temporary prompt list.
             self.prompt_temp += prompt_lst
-            
+
             # Sleep for tokens
             sleep_for_tokens(total_tokens, model)
-        
+
         # Save the prompts used in this method
-        self.prompt_lst.append(save_used_prompts("## Illustration plan prompts", self.prompt_temp))
-    
+        self.prompt_lst.append(save_used_prompts(
+            "## Illustration plan prompts", self.prompt_temp))
+
     def create_ill(self, comment, plan):
         """Create illustration(s) for a comment.
         """
         # Set prompts for LLM.
         # Set system prompt with contents from txt file
         prompt_system = set_full_prompt(
-            os.path.join(get_root_dir(), "data", "prompts", 'illustration', "prompt_create.txt"),
+            os.path.join(get_root_dir(), "data", "prompts",
+                         'illustration', "prompt_create.txt"),
             self.section
         )
         # Set human prompt. Note that {query} is required for LLMChain to work.
         prompt_human = textwrap.dedent(
-        """
+            """
         Write illustrations for this part of the Comment.
         Your notes are: {query}
         """)
         # Get relevant briefs for query
         k = 1
         relevant_briefs = []
-        # Get relevant briefs, looping until token limit is reached or 
+        # Get relevant briefs, looping until token limit is reached or
         # maximum k value is exceeded
         while True:
             # Get relevant briefs from briefs_db (vector database)
-            relevant_briefs_x = self.briefcases.briefs_db.similarity_search(comment, k=k)
+            relevant_briefs_x = self.briefcases.briefs_db.similarity_search(
+                comment, k=k)
             # Convert relevant briefs to a list of strings
-            relevant_briefs_x_doc = [doc.page_content for doc in relevant_briefs]
+            relevant_briefs_x_doc = [
+                doc.page_content for doc in relevant_briefs]
             # Join the list of strings with newline characters
             relevant_briefs_x_str = "\n \n".join(relevant_briefs_x_doc)
             # Calculate token length of input variables
@@ -223,7 +225,7 @@ class Illustration:
                 + num_tokens(comment)
                 + num_tokens(prompt_system)
                 + num_tokens(prompt_human)
-            )            
+            )
             # Check if token limit is exceeded
             if input_tokens > self.section.llm_settings.chunk_size:
                 # If so, break out of loop
@@ -233,7 +235,7 @@ class Illustration:
                 # If so, break out of loop
                 relevant_briefs = relevant_briefs_x
                 break
-            # If token limit is not exceeded and maximum k value is not exceeded, 
+            # If token limit is not exceeded and maximum k value is not exceeded,
             # increment k, set relevant_briefs and continue loop
             k += 1
             relevant_briefs = relevant_briefs_x
@@ -242,7 +244,7 @@ class Illustration:
 
         # Set query to include the provision, comment, and briefs.
         query = textwrap.dedent(
-        f"""
+            f"""
         Plan for illustrations:
         {plan}
         Black letter law provision:
@@ -253,7 +255,7 @@ class Illustration:
         {relevant_briefs_str}
         """
         )
-        
+
         # If necessary, trim back query to fit under token limit.
         logger.debug("Token length of query: %s", num_tokens(query))
         remainder = prompt_system + prompt_human
@@ -265,7 +267,12 @@ class Illustration:
         )
 
         # Set condense prompt (typically should not be necessary)
-        prompt_condense = "Do not edit the black letter law provision or comment. Condense the casebriefs."
+        prompt_condense = textwrap.dedent(
+            """
+            Do not edit the black letter law provision, outline, or component heading.
+            Condense the casebriefs.
+            """
+        )
 
         # Call llm_router to create illustration
         logger.info("create_ill: Creating illustrations.")
@@ -278,25 +285,28 @@ class Illustration:
         )
         return output, total_tokens, model, prompt_lst
 
-        
     def create_ills(self, start_index=0):
         """Loop through comments, creating illustrations for each.
         start_index can be specified if a previous run was interrupted.
         """
-        # If starting from the beginning, then clear the ills_comments list and temporary prompt list.
+        # If starting from the beginning,
+        # then clear the ills_comments list and temporary prompt list.
         if start_index == 0:
-            logger.debug("create_ills: Clearing ills, ills_comments list, and temporary prompt list.")
+            logger.debug(
+                "create_ills: Clearing ills, ills_comments list, and temporary prompt list.")
             self.ills = []
             self.ills_comments = []
             self.prompt_temp = []
         # Loop through comments, creating illustration(s) for each.
         logger.info("create_ills: Creating illustrations.")
         for i, comment in enumerate(self.comment.comments[start_index:]):
-            logger.info("create_ills: Processing comment %s of %s", i+start_index+1, len(self.comment.comments))
+            logger.info("create_ills: Processing comment %s of %s",
+                        i+start_index+1, len(self.comment.comments))
             # Set plan for comment from plans list.
             plan = self.plans[i+start_index]
             # Create illustration for comment.
-            output, total_tokens, model, prompt_lst = self.create_ill(comment, plan)
+            output, total_tokens, model, prompt_lst = self.create_ill(
+                comment, plan)
 
             # Append illustration to ills list.
             ill = output['text']
@@ -304,24 +314,26 @@ class Illustration:
 
             # Add prompts to temporary prompt list.
             self.prompt_temp += prompt_lst
-            
+
             # Sleep for tokens
             sleep_for_tokens(total_tokens, model)
-        
-        # Save the prompts used in this method
-        self.prompt_lst.append(save_used_prompts("## Illustration prompts", self.prompt_temp))
 
+        # Save the prompts used in this method
+        self.prompt_lst.append(save_used_prompts(
+            "## Illustration prompts", self.prompt_temp))
 
     def combine_ills_comments(self):
         """ Combine illustrations and comments into one list.
         """
         # Check if self.comments and self.ills have the same length
         if len(self.comment.comments) != len(self.ills):
-            logger.warning("Warning: self.comment.comments and self.ills have different lengths.")
+            logger.warning(
+                "Warning: self.comment.comments and self.ills have different lengths.")
 
         # Simultaneously iterate over self.comments and self.ills_edits to create ills_comments
         self.ills_comments = (
-            [comment + "\n \n" + ill + "\n \n" for comment, ill in zip(self.comment.comments, self.ills)]
+            [comment + "\n \n" + ill + "\n \n" for comment,
+                ill in zip(self.comment.comments, self.ills)]
         )
 
         # Create comment_ills string from list of ills_comments
@@ -334,24 +346,24 @@ class Illustration:
         """Get outputs from this class.
         """
         return self.__dict__
-        
+
     def save_attributes(self):
         """Save attributes to JSON file
         """
         filename = os.path.join(self.section.path_json, "illustration.json")
-        save_to_json(self, filename)
-    
+        self.save_to_json(filename)
+
     def load_attributes(self):
         """Load attributes from JSON file.
         """
         filename = os.path.join(self.section.path_json, "illustration.json")
-        load_from_json(self, filename)
+        self.load_from_json(filename)
 
     def save_to_md(self):
         """Save prompts and outputs to markdown file.
         """
         # Save prompts to markdown file
-        save_prompts_to_md(self, "illustration_prompts")
+        self.save_prompts_to_md("illustration_prompts")
         # Save outputs to markdown file
         # Set path for markdown file.
         timestamp = get_timestamp()
